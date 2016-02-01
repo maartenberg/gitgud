@@ -1,0 +1,2 @@
+pdf:
+	pdflatex main.tex

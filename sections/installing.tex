@@ -1,0 +1,29 @@
+\section{Installatie}
+
+\begin{frame}
+	\begin{itemize}
+		\item Windows: \url{https://git-scm.com/download/win}
+			\begin{itemize}
+				\item \small{Maak snelkoppeling naar git-bash in \tt{Program Files/Git/cmd}}
+			\end{itemize}
+		\item Mac: \url{https://git-scm.com/download/mac}
+		\item Linux: gebruik je package manager
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Instellen}
+
+	Wie je bent:
+	\begin{itemize}
+		\item \tt{git config --global user.name "Kameraad van Henkenburg"}
+		\item \tt{git config --global user.email "user@example.com"}
+	\end{itemize}
+
+	Als je minder vaak om je wachtwoord wil worden gevraagd (bij externe servers):
+
+	\begin{itemize}
+		\item \tt{git config --global credential.helper cache}
+		\item \tt{git config --global credential.helper "cache --timeout=3600"}
+	\end{itemize}
+\end{frame}

@@ -1,0 +1,32 @@
+\documentclass{beamer}
+
+\usepackage{lmodern}
+\usepackage{hyperref}
+
+\title{Git gud}
+\subtitle{Git voor beginners}
+\author{Sticky}
+\date{16 februari 2016}
+
+\usetheme{Frankfurt}
+\usecolortheme{dove}
+
+
+% ToC invoegen aan het begin van elke sectie.
+\AtBeginSection
+{
+  \begin{frame}
+      \frametitle{Table of Contents}
+      \tableofcontents[currentsection]
+    \end{frame}
+}
+% Bron: https://en.wikibooks.org/wiki/LaTeX/Presentations
+
+\begin{document}
+
+\frame{\titlepage}
+
+\include{sections/installing}
+
+
+\end{document}
