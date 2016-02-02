@@ -1,5 +1,16 @@
-before_install:
-  - "sudo apt-get update && sudo apt-get install -y --no-install-recommends texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended latex-beamer lmodern python-pygments"
+sudo: false
+addons:
+  apt:
+    packages:
+    - texlive-fonts-recommended
+    - texlive-latex-extra
+    - texlive-fonts-extra
+    - dvipng
+    - texlive-latex-recommended
+    - latex-beamer
+    - lmodern
+    - python-pygments
+before_script:
   - "wget https://github.com/gpoore/minted/releases/download/v2.1/minted-2.1.zip"
   - "unzip -j minted-2.1.zip minted-2.1/minted.sty -d ."
 script:
