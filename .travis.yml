@@ -1,7 +1,8 @@
 before_install:
   - "sudo apt-get update && sudo apt-get install -y --no-install-recommends texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended latex-beamer lmodern"
 script:
-  - make pdf
+    - pip install -r requirements.txt
+    - make pdf
 deploy:
   provider: releases
   api_key:

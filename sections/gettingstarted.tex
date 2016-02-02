@@ -1,7 +1,7 @@
 \section{Gitting started}	% huehue
 
 \subsection{Repository aanmaken}
-\frame{
+\begin{frame}[fragile]
 	%\frametitle{Repository aanmaken}
 	\begin{enumerate}
 		\item Open terminal (windows: \alert{git-bash})
@@ -11,16 +11,14 @@
 		\item \texttt{git status}
 	\end{enumerate}
 	Als het goed is zie je nu \alert{niet}:
-	\begin{center}
-		{
-			\small
-			\texttt{fatal: Not a git repository or any of the parent directories: .git}
-		}
-	\end{center}
-}
+	\begin{minted}{text}
+fatal: Not a git repository or 
+	any of the parent directories: .git
+	\end{minted}
+\end{frame}
 
 \subsection{Bestanden laten bijhouden}
-\frame{
+\begin{frame}[fragile]
 	\begin{enumerate}
 		\item \texttt{git status}
 		\item Bekijk 'untracked files'
@@ -29,11 +27,19 @@
 			(map pakt alle bestanden erin mee, . is huidige map)
 		\item \texttt{git commit -m "Eerste commit"}
 	\end{enumerate}
-	Resultaat: \texttt{(ja wat eigenlijk)}
-}
+	Resultaat: 
+	\begin{minted}{text}
+	[master 1234abc] Eerste commit
+	x files added
+	\end{minted}
+\end{frame}
 
 \frame{
 	\begin{center}
 		\includegraphics[width=\textwidth]{images/areas}
 	\end{center}
+	\begin{itemize}
+		\item \texttt{git add} $\rightarrow$ 'Stage Fixes'
+		\item \texttt{git commit} $\rightarrow$ 'Commit'
+	\end{itemize}
 }
