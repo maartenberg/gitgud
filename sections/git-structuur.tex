@@ -4,13 +4,33 @@
 	\begin{tabular}{ll}
 		 Working directory& pas je aan, normale map\\
 		 Staging area& bestanden die je gaat committen\\
-		 Repository / \texttt{.git/}&Bevat metadata en objecten (versies van bestanden)
+		 Repository / \texttt{.git/}&Bevat metadata, objecten
 	\end{tabular}
+
+	Git draait vooral om bestanden hiertussen heen en weer doen
 }
 
 \frame{
-	Geen lijst van wijzigingen, maar een lijst van kopie\"en:
+	Geen lijst van wijzigingen, maar kopie\"en (snapshots):
 	\begin{center}
 		\includegraphics[width=\textwidth]{images/snapshots.png}
 	\end{center}
+	(Een version komt hier overeen met een commit, die dus wijst naar versch. versies van bestanden)
 }
+
+\frame{
+	\frametitle{Commit}
+	\begin{itemize}
+		\item Info over jou: (gebruikers)naam + email
+		\item Bericht: (hopelijk) korte samenvatting van wat er veranderde
+		\item Verwijzing naar set snapshots van bestanden (objects)
+		\item Voorganger (merge: 2, initial: 0)
+		\item Unieke id (40 tekens)
+	\end{itemize}
+	\alert{Later (wanneer gedeeld met externe server) niet meer aan (te) passen!}
+}
+
+%\frame{
+	%\frametitle{Tag}
+	%todo / verplaatsen naar waar tags worden ge\"introduceerd?
+%}
