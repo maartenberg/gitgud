@@ -25,7 +25,8 @@ fatal: Not a git repository or
 		\item \texttt{git add bestand1 bestand2 map1}\\ of:
 			\texttt{git add .}\\
 			(map pakt alle bestanden erin mee, . is huidige map)
-		\item \texttt{git commit -m "Eerste commit"}
+		\item \texttt{git commit}, voer bericht in, opslaan en sluiten\\
+			(of: \texttt{git commit -m "Eerste commit"})
 	\end{enumerate}
 	Resultaat: 
 	\begin{minted}{text}
@@ -43,3 +44,47 @@ fatal: Not a git repository or
 		\item \texttt{git commit} $\rightarrow$ 'Commit'
 	\end{itemize}
 }
+
+\subsubsection{Bestanden negeren}
+\begin{frame}[fragile]{Bestanden negeren}
+	\begin{enumerate}
+		\item \texttt{git status} geeft onbekende bestanden altijd aan
+		\item Oplossing: \texttt{.gitignore}:
+	\end{enumerate}
+	\begin{minted}{text}
+		# alle bestanden in de map bin
+		bin/*
+
+		# alle .exe
+		*.exe
+
+		# maar wel dinges.exe
+		!dinges.exe
+	\end{minted}
+\end{frame}
+
+\subsection{Wat is er gebeurd?}
+% git log
+\begin{frame}{log}
+	\begin{tabular}{ll}
+		\texttt{git log}& Bekijk geschiedenis van commits (\texttt{--reverse}: oudste eerst)\\
+		\texttt{git show}& Bekijk veranderingen in 1 commit, standaard de nieuwste
+	\end{tabular}
+\end{frame}
+
+% git diff
+\begin{frame}{git diff}
+	\begin{tabular}{ll}
+		\texttt{git diff}&Toon veranderingen in tracked files (unstaged)\\
+		\texttt{git diff --staged}&Toon veranderingen klaargezet voor commit\\
+		\texttt{git diff HEAD\^}&Toon veranderingen sinds vorige commit
+	\end{tabular}
+\end{frame}
+
+% git show
+\begin{frame}{git show}
+	\begin{tabular}{ll}
+		\texttt{git show}&Toon info over vorige commit\\
+		\texttt{git show id}&Toon info over commit \texttt{id}\\
+	\end{tabular}
+\end{frame}
