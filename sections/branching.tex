@@ -1,5 +1,128 @@
-\section{Verschillende versies naast elkaar}[Branches]
+\section{Branching}
 
-\frame{
+\begin{frame}
 	\texttt{git status}: On branch master \ldots
-}
+\end{frame}
+
+\begin{frame}{Wat is een branch?}
+	\begin{itemize}
+		\item Branch: verwijzing naar commit (die naar een commit verwijst, die naar \ldots)
+		\item Manier om verschillende versies van je geschiedenis te hebben
+	\end{itemize}
+	Voorbeeld volgt:
+\end{frame}
+
+\begin{frame}[fragile]
+	\begin{minted}[fontsize=\footnotesize,bgcolor=light-gray]{console}
+		$ echo "A" > bestand.txt
+		$ git add bestand.txt; git commit -m "Maak bestand A"
+		[master (root-commit) fd92806] Voeg bestand toe naar versie A
+		 1 file changed, 1 insertion(+)
+		  create mode 100644 bestand.txt
+		$ git branch volgendeversie
+		$ git checkout volgendeversie
+		$ git status
+		On branch volgendeversie
+		nothing to commit, working directory clean
+		$ echo "Waardevolle toevoeging die" >> bestand.txt
+		$ git add bestand.txt; git commit -m "Begin volgende versie"
+		[volgendeversie 5aebde9] Begin volgende versie
+		 1 file changed, 1 insertion(+)
+		$ git checkout master
+		$ cat bestand.txt
+		A
+		$ git checkout volgendeversie
+		$ cat bestand.txt
+		A
+		Waardevolle toevoeging die
+	\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+	\begin{minted}[fontsize=\footnotesize,bgcolor=light-gray]{console}
+		$ echo "later pas af is gemaakt" >> bestand.txt
+		$ git add bestand.txt; git commit -m "Maakt volgende versie af"
+		[volgendeversie 829e8d8] Maakt volgende versie af
+		 1 file changed, 1 insertion(+)
+		$ git checkout master
+		$ git merge volgendeversie
+		Updating fd92806..829e8d8
+		Fast-forward
+		 bestand.txt | 2 ++
+		  1 file changed, 2 insertions(+)
+		$ cat bestand.txt
+		A
+		Waardevolle toevoeging die
+		later pas af is gemaakt
+	\end{minted}
+\end{frame}
+
+\subsection{Branches starten}
+\begin{frame}{Branches starten}
+	\begin{itemize}
+		\item Standaard zit je op branch \texttt{master}
+		\item Splits hiervanaf met \texttt{git branch <naam>}
+		\item Splitsen van een eerdere commit:\\
+			\texttt{git branch <naam> <hash>}
+		%\item Geef aan dat je op die branch verder wil:\\
+			%\texttt{git checkout <naam>}\\
+			%(dit is anders dan bijv. svn's \texttt{checkout}!
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Branches wisselen}
+	Na het maken van een branch moet je aangeven dat je op deze branch verder wil:
+	\begin{itemize}
+		\item \texttt{git checkout <naam>}
+		\item \texttt{git checkout -b <naam>}: maak branch en switch direct
+	\end{itemize}
+	Hierna committen etc.
+\end{frame}
+
+\begin{frame}{Branches samenvoegen}
+	\begin{enumerate}
+		\item Switch naar branch waar je wijziging naartoe moet
+		\item \texttt{git merge <naam>}
+			\begin{itemize}
+				\item Als base branch geen nieuwe commits heeft: fast-forward (commits worden direct overgenomen)
+				\item Als wel: merge commit (2 parents), message typen
+			\end{itemize}
+	\end{enumerate}
+\end{frame}
+
+\subsection{Merge conflicts}
+\begin{frame}[fragile]{Merge conflicts}
+	Als zelfde gebieden in beide bestanden gewijzigd werkt het vorige niet gelijk:
+	\begin{minted}[fontsize=\footnotesize,bgcolor=light-gray]{diff}
+		<<<<<<< HEAD
+		Aangepast na splitsing!
+		=======
+		Bestand aangepast van basisbranch
+		>>>>>>> dinges
+	\end{minted}
+	\begin{itemize}
+		\item Handmatig bewerken (zie \texttt{git status})
+		\item \texttt{git mergetool}
+	\end{itemize}
+	Wanneer opgelost: commit
+\end{frame}
+
+\subsection{Branch management}
+\begin{frame}{Branch management}
+	\begin{itemize}
+		\item \texttt{git branch [-v]}: toon alle branches (en laatste commit)
+		\item \texttt{git branch --no-merged}: wat is niet gemerged?
+		\item \texttt{git branch -d naam}: verwijder (gemergede) branch
+		\item \texttt{git log --graph --all --oneline --decorate} Overzicht van geschiedenis:
+	\end{itemize}
+\end{frame}
+
+\subsection{Branchen en workflows}
+\begin{frame}{Workflows bij branchen}
+	\alert{Beste optie: topic branches}
+	\begin{itemize}
+		\item Je kan altijd \emph{gemakkelijk} terug naar voor je begon
+		\item Je kan wijzigingen maken die nog niet helemaal werken / af zijn
+		\item Base branch kan wijzigen (samenwerken!) zonder dat je in de problemen zit
+	\end{itemize}
+\end{frame}

@@ -1,25 +1,22 @@
-\section{Structuur}
-\frame{
-	3 plekken waar je gegevens zitten:
+\section{Structuur van git}
+\begin{frame}
+	3 plekken waar je gegevens zitten:\\
 	\begin{tabular}{ll}
-		 Working directory& pas je aan, normale map\\
-		 Staging area& bestanden die je gaat committen\\
+		 Working directory			& pas je aan, normale map\\
+		 Staging area				& bestanden die je gaat committen\\
 		 Repository / \texttt{.git/}&Bevat metadata, objecten
 	\end{tabular}
+\end{frame}
 
-	Git draait vooral om bestanden hiertussen heen en weer doen
-}
-
-\frame{
+\begin{frame}{Wat slaat git op?}
 	Geen lijst van wijzigingen, maar kopie\"en (snapshots):
 	\begin{center}
 		\includegraphics[width=\textwidth]{images/snapshots.png}
 	\end{center}
-	(Een version komt hier overeen met een commit, die dus wijst naar versch. versies van bestanden)
-}
+	%(Een version komt hier overeen met een commit, die dus wijst naar versch. versies van bestanden)
+\end{frame}
 
-\frame{
-	\frametitle{Commit}
+\begin{frame}{Commit}
 	\begin{itemize}
 		\item Info over jou: (gebruikers)naam + email
 		\item Bericht: (hopelijk) korte samenvatting van wat er veranderde
@@ -28,9 +25,5 @@
 		\item Unieke id (40 tekens)
 	\end{itemize}
 	\alert{Later (wanneer gedeeld met externe server) niet meer aan (te) passen!}
-}
+\end{frame}
 
-%\frame{
-	%\frametitle{Tag}
-	%todo / verplaatsen naar waar tags worden ge\"introduceerd?
-%}

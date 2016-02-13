@@ -1,7 +1,7 @@
-\section{Gitting started}	% huehue
+\section{Basisacties}
 
 \subsection{Repository aanmaken}
-\begin{frame}[fragile]
+\begin{frame}[fragile]{Repository maken}
 	%\frametitle{Repository aanmaken}
 	\begin{enumerate}
 		\item Open terminal (windows: \alert{git-bash})
@@ -18,7 +18,7 @@ fatal: Not a git repository or
 \end{frame}
 
 \subsection{Bestanden laten bijhouden}
-\begin{frame}[fragile]
+\begin{frame}[fragile]{Je eerste commit}
 	\begin{enumerate}
 		\item \texttt{git status}
 		\item Bekijk 'untracked files'
@@ -35,7 +35,45 @@ fatal: Not a git repository or
 	\end{minted}
 \end{frame}
 
-\frame{
+\begin{frame}{Bestanden ontstagen}
+	\texttt{git add} is ongedaan te maken:\\
+	\texttt{git reset HEAD <bestand>}
+\end{frame}
+
+\begin{frame}{Help mijn commit is niet goed}
+	\texttt{git commit --amend}:
+	\begin{itemize}
+		\item Commit message nog aanpassen
+		\item Files die niet gestaged waren
+	\end{itemize}
+	\alert{Commit moet nieuwste en niet gedeeld zijn}
+\end{frame}
+
+\subsubsection{Commit messages}
+\begin{frame}{Commit message}
+	Iedere commit heeft een message:
+	\begin{itemize}
+		\item Subject line
+		\item Lege regel
+		\item Body
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Commit message schrijven}
+	Niet verplicht, wel handig/netjes:
+	\begin{enumerate}
+		\item Scheid subject en body met een lege regel (!)
+		\item Subject niet langer dan 50 tekens
+		\item Subject beginnen met een hoofdletter
+		\item Subject niet eindigen met een punt
+		\item Subject imperatief: `Verwijder alles' i.p.v. `Verwijdert alles'
+		\item Regels van de body op 72 tekens lang
+		\item Zet \emph{wat} en \emph{waarom} in de body, \emph{hoe} gebeurt automatisch
+	\end{enumerate}
+	% Bron: http://chris.beams.io/posts/git-commit/
+\end{frame}
+
+\begin{frame}
 	\begin{center}
 		\includegraphics[width=\textwidth]{images/areas}
 	\end{center}
@@ -43,15 +81,15 @@ fatal: Not a git repository or
 		\item \texttt{git add} $\rightarrow$ 'Stage Fixes'
 		\item \texttt{git commit} $\rightarrow$ 'Commit'
 	\end{itemize}
-}
+\end{frame}
 
 \subsubsection{Bestanden negeren}
 \begin{frame}[fragile]{Bestanden negeren}
-	\begin{enumerate}
+	\begin{itemize}
 		\item \texttt{git status} geeft onbekende bestanden altijd aan
-		\item Oplossing: \texttt{.gitignore}:
-	\end{enumerate}
-	\begin{minted}{text}
+		\item Oplossing 1: \texttt{.gitignore}:
+	\end{itemize}
+	\begin{minted}[bgcolor=light-gray]{text}
 		# alle bestanden in de map bin
 		bin/*
 
@@ -61,14 +99,23 @@ fatal: Not a git repository or
 		# maar wel dinges.exe
 		!dinges.exe
 	\end{minted}
+	(\texttt{.gitignore} moet wel gecommit worden)
 \end{frame}
 
-\subsection{Wat is er gebeurd?}
+\begin{frame}{Bestanden alleen voor jezelf negeren}
+	\texttt{.git/info/exclude}:
+	\begin{itemize}
+		\item Alleen op je eigen kopie van repo
+		\item Zelfde syntax als \texttt{.gitignore}
+	\end{itemize}
+\end{frame}
+
+\subsection{Geschiedenis bekijken}
 % git log
 \begin{frame}{log}
 	\begin{tabular}{ll}
-		\texttt{git log}& Bekijk geschiedenis van commits (\texttt{--reverse}: oudste eerst)\\
-		\texttt{git show}& Bekijk veranderingen in 1 commit, standaard de nieuwste
+		\texttt{git log}& Bekijk geschiedenis van commits (\texttt{--reverse})\\
+		\texttt{git show}& Bekijk veranderingen in commit, standaard nieuwste
 	\end{tabular}
 \end{frame}
 
@@ -83,8 +130,18 @@ fatal: Not a git repository or
 
 % git show
 \begin{frame}{git show}
-	\begin{tabular}{ll}
+	\begin{tabular}{l l}
 		\texttt{git show}&Toon info over vorige commit\\
 		\texttt{git show id}&Toon info over commit \texttt{id}\\
 	\end{tabular}
+\end{frame}
+
+\section{Dingen ongedaan maken}
+\subsection{Bestand terugdraaien naar onbewerkt}
+\begin{frame}{Bestand terug naar vorige commit}
+	\texttt{git checkout -- <bestand>} \\
+	\alert{Omdat dit niet gecommit was ben je je wijzigingen kwijt!}
+\end{frame}
+\subsection{1 commit ongedaan maken}
+\begin{frame}{git revert}
 \end{frame}
