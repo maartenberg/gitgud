@@ -137,11 +137,53 @@ fatal: Not a git repository or
 \end{frame}
 
 \section{Dingen ongedaan maken}
+
 \subsection{Bestand terugdraaien naar onbewerkt}
 \begin{frame}{Bestand terug naar vorige commit}
 	\texttt{git checkout -- <bestand>} \\
 	\alert{Omdat dit niet gecommit was ben je je wijzigingen kwijt!}
 \end{frame}
-\subsection{1 commit ongedaan maken}
+
+\subsection{Bestanden terugdraaien naar eerdere versie}
+\begin{frame}{Bestand(en) terug naar eerdere versie}
+	\begin{itemize}
+		\item \texttt{git checkout <hash> <bestand>}: enkele bestanden, staget
+		\item \texttt{git checkout HEAD <bestand>}: vorige ongedaan maken
+		\item \texttt{git checkout <hash>}: detached HEAD
+		\item \texttt{git checkout master}: detached HEAD ongedaan maken
+	\end{itemize}
+\end{frame}
+
+\subsection{Commits ongedaan maken}
 \begin{frame}{git revert}
+	\begin{itemize}
+		\item \texttt{git revert <hash>}: maak nieuwe omgekeerde commit
+		\item Safe: reverts van reverts van reverts kan je reverten
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{git reset}
+	Veilig:
+	\begin{itemize}
+		\item \texttt{git reset}: unstage alles
+		\item \texttt{git reset <bestand>}: unstage bestand
+	\end{itemize}
+	\alert{Onveilig:}
+	\begin{itemize}
+		\item \texttt{git reset --hard}: \texttt{checkout --} op hele working directory
+		\item \texttt{git reset <commit>}: verwijder alle commits na \texttt{<commit>}, laat WD staan
+		\item \texttt{git reset --hard <commit>}: \alert{dat is pech, data weg!}
+	\end{itemize}
+	\alert{Reset alleen lokale dingen!}
+\end{frame}
+
+\begin{frame}{git clean}
+	\alert{Verwijdert untracked bestanden!}
+	\begin{itemize}
+		\item \texttt{git clean -n}: dry run
+		\item \texttt{git clean -x}: inclusief genegeerd
+		\item \texttt{git clean -d}: untracked mappen
+		\item \texttt{git clean --force}: \alert{poef}
+	\end{itemize}
+	(Meestal beter om een snapshot van je branch te downloaden)
 \end{frame}
