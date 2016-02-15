@@ -20,7 +20,7 @@ fatal: Not a git repository or
 \subsection{Bestanden laten bijhouden}
 \begin{frame}[fragile]{Je eerste commit}
 	\begin{enumerate}
-		\item \texttt{git status}
+		\item \texttt{git status}: overzicht van wat afwijkt van opgeslagen
 		\item Bekijk 'untracked files'
 		\item \texttt{git add bestand1 bestand2 map1}\\ of:
 			\texttt{git add .}\\
@@ -37,7 +37,8 @@ x files added
 
 \begin{frame}{Bestanden ontstagen}
 	\texttt{git add} is ongedaan te maken:\\
-	\texttt{git reset HEAD <bestand>}
+	\texttt{git reset HEAD <bestand>}\\
+	(Zie ook de tekst van \texttt{git status})
 \end{frame}
 
 \begin{frame}{Help mijn commit is niet goed}
@@ -47,6 +48,13 @@ x files added
 		\item Files die niet gestaged waren
 	\end{itemize}
 	\alert{Commit moet nieuwste en niet gedeeld zijn}
+\end{frame}
+
+\subsubsection{Wat is hier gebeurd?}
+\begin{frame}
+	\begin{center}
+		graph hier
+	\end{center}
 \end{frame}
 
 \subsubsection{Commit messages}
