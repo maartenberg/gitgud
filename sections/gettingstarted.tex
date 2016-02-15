@@ -24,7 +24,7 @@ fatal: Not a git repository or
 		\item Bekijk 'untracked files'
 		\item \texttt{git add bestand1 bestand2 map1}\\ of:
 			\texttt{git add .}\\
-			(map pakt alle bestanden erin mee, . is huidige map)
+			(opgeven van map pakt alles erin, . is huidige map)
 		\item \texttt{git commit}, voer bericht in, opslaan en sluiten\\
 			(of: \texttt{git commit -m "Eerste commit"})
 	\end{enumerate}
@@ -137,6 +137,34 @@ bin/*
 	\end{tabular}
 \end{frame}
 
+\subsection{Overzicht}
+\begin{frame}{Overzicht}
+	{ \footnotesize
+	\begin{tabular}{ll}
+		\texttt{git init}					& maak een nieuwe repository \\
+		\texttt{git status} 				& bekijk wat git denkt dat er aan de hand is \\
+		\texttt{git add file map \ldots}	& bestanden klaarzetten voor commit (stagen)	\\
+		\texttt{git commit} 				& klaargezette bestanden in geschiedenis zetten (committen)\\
+		\texttt{git reset file}		    	& bestanden ontstagen (omgekeerde van \texttt{add})	\\
+		\hline
+		\texttt{git diff}					& Veranderingen in tracked files					\\
+		\texttt{git diff --staged}			& Wat ga ik committen? (wat is staged?)				\\
+		\texttt{git diff HEAD\^}			& Wat is er veranderd sinds de vorige commit?		\\
+		\hline
+		\texttt{git log}					& Bekijk vorige commits								\\
+		\texttt{git show id}				& Bekijk commit \texttt{id} in detail
+	\end{tabular}
+	}
+	Doen:
+	\begin{enumerate}
+		\item Maak een lege map met repo
+		\item Download \url{https://j.mp/gitgudscript}
+		\item Add en commit
+		\item Bug: 16 moet \texttt{`date +\%d`} zijn, repareer en commit
+		\item \texttt{bash simpelscript.sh}
+	\end{enumerate}
+\end{frame}
+
 \section{Dingen ongedaan maken}
 
 \subsection{Bestand terugdraaien naar onbewerkt}
@@ -187,4 +215,15 @@ bin/*
 		\item \texttt{git clean --force}: \alert{poef}
 	\end{itemize}
 	(Meestal beter om een snapshot van je branch te downloaden)
+\end{frame}
+
+\subsection{Overzicht}
+\begin{frame}{Overzicht}
+	{ \footnotesize
+	\begin{tabular}{ll}
+		\texttt{git add}	& bestanden klaarzetten voor commit (stagen)	\\
+		\texttt{git commit} & klaargezette bestanden in geschiedenis zetten (committen)\\
+		\texttt{git reset}	& bestanden ontstagen (omgekeerde van \texttt{add}
+	\end{tabular}
+	}
 \end{frame}
