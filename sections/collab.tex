@@ -1,0 +1,41 @@
+\section{Samenwerken / remotes}
+
+\subsection{Remotes}
+\begin{frame}{Remotes}
+	Remote: andere (volledige) git repo met gedeeld punt in geschiedenis
+	\begin{itemize}
+		\item \texttt{git remote -v}: toon remotes met url
+		\item \texttt{git remote add <naam> <url>}: \texttt{naam} wordt alias voor \texttt{url}
+	\end{itemize}
+	Goede plekken om je repository te hosten:
+	\begin{itemize}
+		\item Github: veel gebruikt, Travis, gratis student account (private repo's beperkt)
+		\item Bitbucket: alternatief voor Github, onbeperkt private repo's
+		\item UU GitLab: intern voor de UU, mailinglijst, onbeperkt private repo's
+	\end{itemize}
+\end{frame}
+
+\subsection{SSH keys}
+\begin{frame}{SSH keys}
+	\begin{enumerate}
+		\item Open terminal/Terminal/git-bash
+		\item \texttt{ssh-keygen}
+		\item Edit je \texttt{.bashrc} of \texttt{.profile}\\
+			Voeg toe: \texttt{eval `ssh-agent`}
+	\end{enumerate}
+\end{frame}
+
+\subsection{Bestaande repo overnemen}
+\begin{frame}{git clone}
+	Kopieer repository en maak remote `origin'
+	\begin{itemize}
+		\item \texttt{git clone <url>}
+		\item \texttt{git clone <url> <map>}
+	\end{itemize}
+	Als niet je eigen repo en wel toevoegingen maken: forken
+\end{frame}
+
+\subsection{Wijzigingen binnenhalen}
+\begin{frame}{git fetch}
+	Kopieer commits van een remote naar je repo
+\end{frame}
