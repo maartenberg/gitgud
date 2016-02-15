@@ -37,5 +37,48 @@
 
 \subsection{Wijzigingen binnenhalen}
 \begin{frame}{git fetch}
-	Kopieer commits van een remote naar je repo
+	\begin{itemize}
+		\item Kopieer commits van een remote naar je repo
+		\item Je krijgt ze nog niet direct zichtbaar, maar als remote branch:
+		\item \texttt{git diff origin/branch}
+		\item \texttt{git merge origin/branch}
+		\item \texttt{git pull} : Fetch + merge ineen
+		\item Zorg voor een schone working directory!
+	\end{itemize}
+\end{frame}
+
+\subsection{Wijzigingen publiceren}
+\begin{frame}{git push}
+	\begin{itemize}
+		\item Kopieer commits van je repo naar een remote
+		\item Vergelijkbaar met een pull vanaf je remote
+		\item Wanneer nieuwe branch: \texttt{git push --set-upstream origin branch}
+	\end{itemize}
+\end{frame}
+
+\subsection{Pull requests}
+\begin{frame}{Pull requests}
+	\begin{itemize}
+		\item Geen echt git-mechanisme
+		\item ``Hee, wil jij \texttt{git pull blabla} doen?''
+		\item Kom je heel veel tegen in Github etc.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Overzicht}
+	\begin{tabular}{ll}
+		\texttt{git remote}		& Beheer servers waar je vandaan/naar pusht\\
+		\texttt{git clone}		& Maak een lokale kopie van een repo\\
+		\texttt{git fetch}		& Download wijzigingen, maar hou ze apart (te mergen)\\
+		\texttt{git pull}		& Fetch en merge gelijk\\
+		\texttt{git push}		& Kopieer commits naar remote
+	\end{tabular}
+	Doen:
+	\begin{enumerate}
+		\item Ga naar een niet-repo map
+		\item Open \url{https://j.mp/gitgud-repo}, maak account, fork
+		\item Clone je geforkte repo
+		\item Zet je naam of iets anders op de lijst
+		\item Commit, push, pull request via de site
+	\end{enumerate}
 \end{frame}

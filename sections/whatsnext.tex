@@ -1,0 +1,33 @@
+\section[Tips]{Tips en tricks}
+
+\begin{frame}{git alias}
+	Maak verkortingen voor commando's:
+	\begin{itemize}
+		\item \texttt{git config alias.overzicht "log --all --graph --decorate --oneline"}
+		\item \texttt{git config alias.unstage "reset HEAD"}
+	\end{itemize}
+	Maak aliases global (voor al je git repo's op die computer) met \texttt{git config --global \ldots}
+\end{frame}
+
+\begin{frame}{git grep}
+	Zoeken in alle tracked files:
+	\begin{itemize}
+		\item \texttt{git grep "Zoeken"}
+		\item \texttt{git grep -i "zOEkEn"} hoofdletterongevoelig
+		\item \texttt{git grep -n "Zoeken"} regelnummer
+		\item \texttt{git config --global alias.zoek "grep -ni"} alias voor beide
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{git help}
+	Uitgebreide handleiding: \texttt{git help [commando]}
+\end{frame}
+
+\begin{frame}{Voorbij deze workshop}
+	\begin{itemize}
+		\item \url{https://git-scm.com/book} Pro Git
+		\item \url{https://codecademy.com/learn/learn-git}
+		\item \url{https://www.atlassian.com/git/tutorials/}
+		\item \url{https://overapi.com/git/} Cheat sheet!
+	\end{itemize}
+\end{frame}
