@@ -7,6 +7,7 @@ addons:
     - texlive-fonts-extra
     - dvipng
     - texlive-latex-recommended
+    - texlive-font-utils
     - texlive-humanities
     - latex-beamer
     - lmodern
