@@ -1,5 +1,6 @@
 \section{Branching}
 
+\subsection{Wat zijn branches?}
 \begin{frame}
 	\texttt{git status}: On branch master \ldots
 \end{frame}
@@ -9,53 +10,116 @@
 		\item Branch: verwijzing naar commit (die naar een commit verwijst, die naar \ldots)
 		\item Manier om verschillende versies van je geschiedenis te hebben
 	\end{itemize}
-	Voorbeeld volgt:
+	Voorbeeld volgt
 \end{frame}
 
-\begin{frame}[fragile]
-	\begin{minted}[fontsize=\footnotesize,bgcolor=light-gray]{console}
-$ echo "A" > bestand.txt
-$ git add bestand.txt; git commit -m "Maak bestand A"
-[master (root-commit) fd92806] Voeg bestand toe naar versie A
- 1 file changed, 1 insertion(+)
-  create mode 100644 bestand.txt
-$ git branch volgendeversie
-$ git checkout volgendeversie
-$ git status
-On branch volgendeversie
-nothing to commit, working directory clean
-$ echo "Waardevolle toevoeging die" >> bestand.txt
-$ git add bestand.txt; git commit -m "Begin volgende versie"
-[volgendeversie 5aebde9] Begin volgende versie
- 1 file changed, 1 insertion(+)
-$ git checkout master
-$ cat bestand.txt
-A
-$ git checkout volgendeversie
-$ cat bestand.txt
-A
-Waardevolle toevoeging die
-	\end{minted}
+\begin{frame}
+	\begin{center}
+		\includegraphics[width=.7\textwidth]{graphs/branching1.eps}
+	\end{center}
 \end{frame}
 
-\begin{frame}[fragile]
-	\begin{minted}[fontsize=\footnotesize,bgcolor=light-gray]{console}
-$ echo "later pas af is gemaakt" >> bestand.txt
-$ git add bestand.txt; git commit -m "Maakt volgende versie af"
-[volgendeversie 829e8d8] Maakt volgende versie af
- 1 file changed, 1 insertion(+)
-$ git checkout master
-$ git merge volgendeversie
-Updating fd92806..829e8d8
-Fast-forward
- bestand.txt | 2 ++
-  1 file changed, 2 insertions(+)
-$ cat bestand.txt
-A
-Waardevolle toevoeging die
-later pas af is gemaakt
-	\end{minted}
+\begin{frame}
+	\begin{center}
+		\includegraphics[width=.7\textwidth]{graphs/branching2.eps}
+	\end{center}
+	\texttt{git branch branch}
 \end{frame}
+
+\begin{frame}
+	\begin{center}
+		\includegraphics[width=.7\textwidth]{graphs/branching3.eps}
+	\end{center}
+	\texttt{git checkout branch}
+\end{frame}
+
+\begin{frame}
+	\begin{center}
+		\includegraphics[width=.7\textwidth]{graphs/branching4.eps}
+	\end{center}
+	\ldots, \texttt{git commit}
+\end{frame}
+
+\begin{frame}
+	\begin{center}
+		\includegraphics[width=.7\textwidth]{graphs/branching5.eps}
+	\end{center}
+	\texttt{git checkout master}
+\end{frame}
+
+\begin{frame}
+	\begin{center}
+		\includegraphics[width=.7\textwidth]{graphs/branching6.eps}
+	\end{center}
+	\texttt{git checkout branch}, \ldots, \texttt{git commit}
+\end{frame}
+
+\begin{frame}
+	\begin{center}
+		\includegraphics[width=.7\textwidth]{graphs/branching7.eps}
+	\end{center}
+	\texttt{git checkout master; git merge branch}
+\end{frame}
+
+\begin{frame}
+	Master kan veranderen:
+	\begin{center}
+		\includegraphics[width=.7\textwidth]{graphs/branching8.eps}
+	\end{center}
+	\texttt{git checkout master}, \ldots, \texttt{git commit}
+\end{frame}
+
+\begin{frame}
+	\begin{center}
+		\includegraphics[width=\textwidth]{graphs/branching9.eps}
+	\end{center}
+	\texttt{git merge branch}
+\end{frame}
+
+%\begin{frame}[fragile]
+	%\begin{minted}[fontsize=\footnotesize,bgcolor=light-gray]{console}
+%$ echo "A" > bestand.txt
+%$ git add bestand.txt; git commit -m "Maak bestand A"
+%[master (root-commit) fd92806] Voeg bestand toe naar versie A
+ %1 file changed, 1 insertion(+)
+  %create mode 100644 bestand.txt
+%$ git branch volgendeversie
+%$ git checkout volgendeversie
+%$ git status
+%On branch volgendeversie
+%nothing to commit, working directory clean
+%$ echo "Waardevolle toevoeging die" >> bestand.txt
+%$ git add bestand.txt; git commit -m "Begin volgende versie"
+%[volgendeversie 5aebde9] Begin volgende versie
+ %1 file changed, 1 insertion(+)
+%$ git checkout master
+%$ cat bestand.txt
+%A
+%$ git checkout volgendeversie
+%$ cat bestand.txt
+%A
+%Waardevolle toevoeging die
+	%\end{minted}
+%\end{frame}
+
+%\begin{frame}[fragile]
+	%\begin{minted}[fontsize=\footnotesize,bgcolor=light-gray]{console}
+%$ echo "later pas af is gemaakt" >> bestand.txt
+%$ git add bestand.txt; git commit -m "Maakt volgende versie af"
+%[volgendeversie 829e8d8] Maakt volgende versie af
+ %1 file changed, 1 insertion(+)
+%$ git checkout master
+%$ git merge volgendeversie
+%Updating fd92806..829e8d8
+%Fast-forward
+ %bestand.txt | 2 ++
+  %1 file changed, 2 insertions(+)
+%$ cat bestand.txt
+%A
+%Waardevolle toevoeging die
+%later pas af is gemaakt
+	%\end{minted}
+%\end{frame}
 
 \subsection{Branches starten}
 \begin{frame}{Branches starten}

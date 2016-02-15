@@ -11,6 +11,7 @@ addons:
     - latex-beamer
     - lmodern
     - python-pygments
+    - graphviz
 before_script:
   - "wget https://github.com/gpoore/minted/releases/download/v2.1/minted-2.1.zip"
   - "unzip -j minted-2.1.zip minted-2.1/minted.sty -d ."

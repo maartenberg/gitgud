@@ -1,0 +1,18 @@
+
+digraph repo {
+	rankdir="RL";
+	C -> B;
+	B -> A;
+	D -> C;
+	E -> D;
+	F -> C;
+	G -> E;
+	G -> F;
+	node [rank=3,shape=box, color=grey] master;
+	node [rank=3,shape=box, color=grey] branch;
+	master -> G;
+	HEAD -> master;
+	branch -> E;
+	{ rank = same; E; branch; }
+	{ rank = same; G; HEAD;master;}
+}

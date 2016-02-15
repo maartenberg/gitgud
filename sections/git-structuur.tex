@@ -1,4 +1,5 @@
-\section{Structuur van git}
+\section[Structuur]{Structuur van Git}
+\subsection{Locaties}
 \begin{frame}
 	3 plekken waar je gegevens zitten:\\
 	\begin{tabular}{ll}
@@ -6,8 +7,10 @@
 		 Staging area				& bestanden die je gaat committen\\
 		 Repository / \texttt{.git/}&Bevat metadata, objecten
 	\end{tabular}
+	Standaard: edit-stage-commit cyclus
 \end{frame}
 
+\subsection{Gegevensstructuur}
 \begin{frame}{Wat slaat git op?}
 	Geen lijst van wijzigingen, maar kopie\"en (snapshots):
 	\begin{center}

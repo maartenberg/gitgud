@@ -8,6 +8,7 @@
 *.pdf
 
 _minted-main/*
+graphs/*.eps
 
 # vim
 *~
