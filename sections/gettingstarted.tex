@@ -11,7 +11,7 @@
 		\item \texttt{git status}
 	\end{enumerate}
 	Als het goed is zie je nu \alert{niet}:
-	\begin{minted}{text}
+	\begin{minted}[bgcolor=light-gray]{text}
 fatal: Not a git repository or 
 	any of the parent directories: .git
 	\end{minted}
@@ -29,9 +29,9 @@ fatal: Not a git repository or
 			(of: \texttt{git commit -m "Eerste commit"})
 	\end{enumerate}
 	Resultaat: 
-	\begin{minted}{text}
-	[master 1234abc] Eerste commit
-	x files added
+	\begin{minted}[bgcolor=light-gray]{text}
+[master 1234abc] Eerste commit
+x files added
 	\end{minted}
 \end{frame}
 
@@ -90,15 +90,16 @@ fatal: Not a git repository or
 		\item Oplossing 1: \texttt{.gitignore}:
 	\end{itemize}
 	\begin{minted}[bgcolor=light-gray]{text}
-		# alle bestanden in de map bin
-		bin/*
+# alle bestanden in de map bin
+bin/*
 
-		# alle .exe
-		*.exe
+# alle .exe
+*.exe
 
-		# maar wel dinges.exe
-		!dinges.exe
+# maar wel dinges.exe
+!dinges.exe
 	\end{minted}
+
 	(\texttt{.gitignore} moet wel gecommit worden)
 \end{frame}
 
