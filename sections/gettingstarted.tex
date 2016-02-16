@@ -51,9 +51,10 @@ x files added
 \end{frame}
 
 \subsubsection{Wat is hier gebeurd?}
-\begin{frame}
+\begin{frame}{Wat is er nu eigenlijk gebeurd?}
 	\begin{center}
-		graph hier
+		\includegraphics[width=.7\textwidth]{graphs/basis1.eps}<1>
+		\includegraphics[width=.7\textwidth]{graphs/basis2.eps}<2>
 	\end{center}
 \end{frame}
 
@@ -189,6 +190,16 @@ bin/*
 		\item \texttt{git checkout <hash>}: detached HEAD
 		\item \texttt{git checkout master}: detached HEAD ongedaan maken
 	\end{itemize}
+\end{frame}
+
+\begin{frame}{Detached HEAD in plaatjes}
+	\begin{center}
+		\includegraphics[width=.7\textwidth]{graphs/basis3.eps}<1,3>
+		\includegraphics[width=.7\textwidth]{graphs/basis4.eps}<2>
+	\end{center}
+	\only<1>{Basisstaat van eerder}
+	\only<2>{\texttt{git checkout master} (niet \texttt{C}!)}
+	\only<3>{\texttt{git checkout B}}
 \end{frame}
 
 \subsection{Commits ongedaan maken}

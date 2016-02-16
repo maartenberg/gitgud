@@ -15,111 +15,59 @@
 
 \begin{frame}
 	\begin{center}
-		\includegraphics[width=.7\textwidth]{graphs/branching1.eps}
+		\only<1>{
+			\includegraphics[width=.7\textwidth]{graphs/branching1.eps}
+		}
+		\only<2>{
+			\includegraphics[width=.7\textwidth]{graphs/branching2.eps}
+		}
+		\only<3>{
+			\includegraphics[width=.7\textwidth]{graphs/branching3.eps}
+		}
+		\only<4>{
+			\includegraphics[width=.7\textwidth]{graphs/branching4.eps}
+		}
+		\only<5>{
+			\includegraphics[width=.7\textwidth]{graphs/branching5.eps}
+		}
+		\only<6>{
+			\includegraphics[width=.7\textwidth]{graphs/branching6.eps}
+		}
+		\only<7>{
+			\includegraphics[width=.7\textwidth]{graphs/branching7.eps}
+		}
+		\only<8>{
+			\includegraphics[width=.7\textwidth]{graphs/branching8.eps}
+		}
+		\only<9>{
+			\includegraphics[width=.7\textwidth]{graphs/branching9.eps}
+		}
 	\end{center}
+	\only<2>{
+		\texttt{git branch branch}
+	}
+	\only<3>{
+		\texttt{git checkout branch}
+	}
+	\only<4>{
+		\ldots, \texttt{git commit}
+	}
+	\only<5>{
+		\texttt{git checkout master}
+	}
+	\only<6>{
+		\texttt{git checkout branch}, \ldots, \texttt{git commit}
+	}
+	\only<7>{
+		\texttt{git checkout master; git merge branch}
+	}
+	\only<8>{
+		\texttt{git checkout master}, \ldots, \texttt{git commit}
+	}
+	\only<9>{
+		\texttt{git merge branch}
+	}
 \end{frame}
-
-\begin{frame}
-	\begin{center}
-		\includegraphics[width=.7\textwidth]{graphs/branching2.eps}
-	\end{center}
-	\texttt{git branch branch}
-\end{frame}
-
-\begin{frame}
-	\begin{center}
-		\includegraphics[width=.7\textwidth]{graphs/branching3.eps}
-	\end{center}
-	\texttt{git checkout branch}
-\end{frame}
-
-\begin{frame}
-	\begin{center}
-		\includegraphics[width=.7\textwidth]{graphs/branching4.eps}
-	\end{center}
-	\ldots, \texttt{git commit}
-\end{frame}
-
-\begin{frame}
-	\begin{center}
-		\includegraphics[width=.7\textwidth]{graphs/branching5.eps}
-	\end{center}
-	\texttt{git checkout master}
-\end{frame}
-
-\begin{frame}
-	\begin{center}
-		\includegraphics[width=.7\textwidth]{graphs/branching6.eps}
-	\end{center}
-	\texttt{git checkout branch}, \ldots, \texttt{git commit}
-\end{frame}
-
-\begin{frame}
-	\begin{center}
-		\includegraphics[width=.7\textwidth]{graphs/branching7.eps}
-	\end{center}
-	\texttt{git checkout master; git merge branch}
-\end{frame}
-
-\begin{frame}
-	Master kan veranderen:
-	\begin{center}
-		\includegraphics[width=.7\textwidth]{graphs/branching8.eps}
-	\end{center}
-	\texttt{git checkout master}, \ldots, \texttt{git commit}
-\end{frame}
-
-\begin{frame}
-	\begin{center}
-		\includegraphics[width=\textwidth]{graphs/branching9.eps}
-	\end{center}
-	\texttt{git merge branch}
-\end{frame}
-
-%\begin{frame}[fragile]
-	%\begin{minted}[fontsize=\footnotesize,bgcolor=light-gray]{console}
-%$ echo "A" > bestand.txt
-%$ git add bestand.txt; git commit -m "Maak bestand A"
-%[master (root-commit) fd92806] Voeg bestand toe naar versie A
- %1 file changed, 1 insertion(+)
-  %create mode 100644 bestand.txt
-%$ git branch volgendeversie
-%$ git checkout volgendeversie
-%$ git status
-%On branch volgendeversie
-%nothing to commit, working directory clean
-%$ echo "Waardevolle toevoeging die" >> bestand.txt
-%$ git add bestand.txt; git commit -m "Begin volgende versie"
-%[volgendeversie 5aebde9] Begin volgende versie
- %1 file changed, 1 insertion(+)
-%$ git checkout master
-%$ cat bestand.txt
-%A
-%$ git checkout volgendeversie
-%$ cat bestand.txt
-%A
-%Waardevolle toevoeging die
-	%\end{minted}
-%\end{frame}
-
-%\begin{frame}[fragile]
-	%\begin{minted}[fontsize=\footnotesize,bgcolor=light-gray]{console}
-%$ echo "later pas af is gemaakt" >> bestand.txt
-%$ git add bestand.txt; git commit -m "Maakt volgende versie af"
-%[volgendeversie 829e8d8] Maakt volgende versie af
- %1 file changed, 1 insertion(+)
-%$ git checkout master
-%$ git merge volgendeversie
-%Updating fd92806..829e8d8
-%Fast-forward
- %bestand.txt | 2 ++
-  %1 file changed, 2 insertions(+)
-%$ cat bestand.txt
-%A
-%Waardevolle toevoeging die
-%later pas af is gemaakt
-	%\end{minted}
-%\end{frame}
 
 \subsection{Branches starten}
 \begin{frame}{Branches starten}
@@ -128,9 +76,6 @@
 		\item Splits hiervanaf met \texttt{git branch <naam>}
 		\item Splitsen van een eerdere commit:\\
 			\texttt{git branch <naam> <hash>}
-		%\item Geef aan dat je op die branch verder wil:\\
-			%\texttt{git checkout <naam>}\\
-			%(dit is anders dan bijv. svn's \texttt{checkout}!
 	\end{itemize}
 \end{frame}
 
@@ -185,6 +130,7 @@ Bestand aangepast van basisbranch
 \begin{frame}{Workflows bij branchen}
 	\alert{Beste optie: topic branches}
 	\begin{itemize}
+		\item Voor iedere feature een nieuwe branch, mergen wanneer klaar
 		\item Je kan altijd \emph{gemakkelijk} terug naar voor je begon
 		\item Je kan wijzigingen maken die nog niet helemaal werken / af zijn
 		\item Base branch kan wijzigen (samenwerken!) zonder dat je in de problemen zit

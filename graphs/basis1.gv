@@ -1,0 +1,4 @@
+digraph repo {
+	rankdir = "RL";
+	B -> A;
+}
