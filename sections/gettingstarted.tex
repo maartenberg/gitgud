@@ -2,7 +2,6 @@
 
 \subsection{Repository aanmaken}
 \begin{frame}[fragile]{Repository maken}
-	%\frametitle{Repository aanmaken}
 	\begin{enumerate}
 		\item Open terminal (windows: \alert{git-bash})
 		\item \texttt{cd} naar map die je wil bijhouden
@@ -190,6 +189,7 @@ bin/*
 		\item \texttt{git checkout <hash>}: detached HEAD
 		\item \texttt{git checkout master}: detached HEAD ongedaan maken
 	\end{itemize}
+	%(Hash opzoeken met git log, of: \texttt{HEAD\^, HEAD\^\^, HEAD\textasciitilde 5})
 \end{frame}
 
 \begin{frame}{Detached HEAD in plaatjes}
@@ -198,8 +198,8 @@ bin/*
 		\includegraphics[width=.7\textwidth]{graphs/basis4.eps}<2>
 	\end{center}
 	\only<1>{Basisstaat van eerder}
-	\only<2>{\texttt{git checkout master} (niet \texttt{C}!)}
-	\only<3>{\texttt{git checkout B}}
+	\only<2>{\texttt{git checkout B}}
+	\only<3>{\texttt{git checkout master} (niet \texttt{C}!)}
 \end{frame}
 
 \subsection{Commits ongedaan maken}
@@ -233,16 +233,27 @@ bin/*
 		\item \texttt{git clean -d}: untracked mappen
 		\item \texttt{git clean --force}: \alert{poef}
 	\end{itemize}
-	(Meestal beter om een snapshot van je branch te downloaden)
+	(Soms beter om een snapshot van je branch te downloaden)
 \end{frame}
 
 \subsection{Overzicht}
 \begin{frame}{Overzicht}
 	{ \footnotesize
 	\begin{tabular}{ll}
-		\texttt{git add}	& bestanden klaarzetten voor commit (stagen)	\\
+		\texttt{git checkout -- bestand}		& bestand terug naar vorige commit	\\
 		\texttt{git commit} & klaargezette bestanden in geschiedenis zetten (committen)\\
 		\texttt{git reset}	& bestanden ontstagen (omgekeerde van \texttt{add}
 	\end{tabular}
 	}
+	Doen:
+	\begin{enumerate}
+		\item Ga terug naar je repo van eerder
+		\item Run het script (\texttt{bash simpelscript.sh}) $\rightarrow$ untracked file
+		\item \texttt{git clean -n}, \texttt{git clean -f}
+		\item \texttt{.gitignore} maken met \texttt{laatstekeer.txt}
+		\item \texttt{git clean -n} : bestand weg?
+		\item \texttt{git clean -xn}, \texttt{git clean -xf}
+		\item Commit je \texttt{.gitignore}
+	\end{enumerate}
+	Cheat sheet van eerdere dingen? \url{http://overapi.com/git}
 \end{frame}
