@@ -7,9 +7,9 @@
 *.snm
 *.pdf
 
-_minted-main/*
-graphs/*.eps
-voorbeelden/basis/laatstekeer.txt
+slides/_minted-main/*
+slides/graphs/*.eps
+slides/voorbeelden/basis/laatstekeer.txt
 
 # vim
 *~
