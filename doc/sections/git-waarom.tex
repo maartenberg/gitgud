@@ -1,0 +1,37 @@
+\section{Waarom?}
+Het komt vaak voor dat je moet samenwerken met mensen op de computer, en met meerdere mensen \'e\'en document (of iets anders) moet maken. Hierbij loop je vaak tegen het probleem aan dat je meerdere versies wilt/moet bijhouden van waar je aan werkt, wat gedoe oplevert met bestandjes heen en weer mailen, kopie\"en van mappen naast elkaar bewaren met de datum in de bestandsnaam, of andere meestal onhandige dingen waar je veel met bestanden moet schuiven.
+
+Hiervoor bestaan natuurlijk oplossingen, en die oplossingen zijn vaak een (vorm van een) versiebeheersysteem.
+
+\subsection{Waarom versiebeheer?}
+Versiebeheer is uitgevonden om de problemen die hierboven zijn beschreven (en andere) op te lossen. Kort gezegd zijn versiebeheersystemen bedoeld om op een effici\"ente manier:
+\begin{enumerate}
+	\item Code te delen (met meerdere locaties of meerdere personen),
+	\item Een geschiedenis van revisies bij te houden en hierin te kunnen zoeken,
+	\item Veranderingen (over een langere tijd) zichtbaar te maken en te kunnen bekijken,
+	\item Een overzicht te krijgen van wie wanneer wat waarom veranderde.
+\end{enumerate}
+
+Het gebruiken van een versiebeheersysteem wil niet per se zeggen dat je al deze dingen wil doen, maar het kan bijna altijd wel.
+
+\subsection{Waarom dan Git?}
+Bij deze workshop is er gekozen voor Git omdat het een vrij bekend versiebeheersysteem is, en Git op bijna alle relevante besturingssystemen wel draaiend te krijgen is, en natuurlijk omdat het ook nog eens goed werkt.
+
+Een aantal sterke punten van Git:
+\begin{enumerate}
+	\item Git is \emph{distributed}: Je hebt zelf (standaard) de gehele geschiedenis, en je lokale kopie kan volledig zelfstandig werken, zonder te moeten communiceren met een centrale server of andere deelnemers. Dit houdt ook in dat veel operaties snel kunnen worden uitgevoerd: je hebt zelf alle informatie al op je schijf staan.
+	\item Git heeft sterke \emph{integrity}: Het is vrijwel onmogelijk om (per ongeluk) een bestand te veranderen zonder dat Git dit merkt, en al helemaal niet om de geschiedenis `stiekem' te veranderen.
+	\item Het is lastig om data te vernietigen: Wanneer je een bestand verandert of verwijdert (en dit op de juiste manier verwerkt via Git) is het alsnog mogelijk om het terug te halen, wat wel zo prettig is als je je bedenkt. Het is helaas wel mogelijk om bij sommige operaties onbedoeld gegevens kwijt te raken, maar hier word je (meestal) wel voor gewaarschuwd (door dit document of door Git zelf, of allebei).
+	\item Git is \emph{non-lineair}: je kan zo veel versies als je maar wilt naast elkaar bewaren, en het aanmaken van een nieuwe versie kost nauwelijks schijfruimte of moeite. Verschillende versies van je project kan je wanneer je maar wilt samenvoegen, en niet alle versies hoeven bij alle deelnemers aan het project bekend te zijn (want Git is \emph{distributed}).
+\end{enumerate}
+Hiernaast is Git ook nog gratis, vrije software, wat betekent dat als je echt nieuwsgierig bent je zou kunnen kijken hoe Git precies iets doet, of zelfs verbeteringen zou kunnen voordragen. Voor meer informatie over Git kan je op de website, \url{https://git-scm.com} kijken.
+
+\subsection{Waarom commandline?}
+Om verschillende redenen gaan we in deze workshop ervanuit dat je Git via de CLI (commandline, terminal, cmd, shell, \ldots), en niet een GUI gebruikt.
+\begin{itemize}
+	\item Git is ervoor ontworpen: Wanneer je git via de CLI gebruikt weet je dat je alle functies van Git kan gebruiken, omdat de CLI als eerste alle functies van Git bevat.
+	\item De CLI is op alle platforms hetzelfde.
+	\item Wanneer je bekend bent met alle namen en dingen die je via de CLI kunt doen kom je er meestal ook wel uit wanneer je later besluit een GUI te willen gebruiken, omdat alle gebruikte termen dan afkomstig zijn uit de CLI.
+	\item Sommige programma's verwijzen je alsnog door naar de CLI wanneer er iets misgaat.
+\end{itemize}
+Mocht je alsnog een GUI willen gebruiken, dan kan je op deze pagina een aantal opties vinden: \url{https://git-scm.com/downloads/guis}.

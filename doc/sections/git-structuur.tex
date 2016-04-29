@@ -1,0 +1,17 @@
+\section{De structuur van Git}
+
+Om goed met Git te kunnen werken is het nodig om een aantal dingen te weten over hoe Git voor- en achter de schermen werkt.
+
+\subsection{Waar worden gegevens opgeslagen?}
+Git slaat zijn informatie in drie ongeveer aparte locaties op. (Uiteraard zitten de drie locaties wel allemaal bij elkaar op dezelfde schijf.)
+\begin{description}
+	\item[Working directory] Dit is de map waarin je bestanden staan, en in 99\% van de gevallen ook waar je je wijzigingen maakt. Je working directory bevat in een verborgen map (\texttt{.git}) de andere twee locaties.
+	\item[Staging area] In de staging area worden kopie\"en van bestanden opgeslagen voordat ze in het repository worden opgenomen. Deze scheiding zorgt ervoor dat je wanneer je een bestand hebt aangepast je eerst nog kan bekijken welke wijzigingen precies worden opgenomen in het repository, en je niet alles wat je in het repository wilt opslaan in \'e\'en keer moet opgeven.
+	\item[Repository] Dit is de plek waar Git achter de schermen informatie en versies van bestanden bijhoudt. Je past nooit rechtstreeks het repository aan, maar werkt altijd via een programma. Het repository is ook niet echt leesbaar voor gewone mensen, dus niet aan prutsen.
+\end{description}
+
+Veel van de dingen die je met Git doet draaien in feite om verschillende informatie tussen deze drie locaties heen en weer schuiven, hierover later meer.
+
+
+\subsection{Wat slaat Git dan op?}
+Git slaat \emph{snapshots} van bestanden op: 

@@ -1,4 +1,2 @@
-all: main.pdf
-
-main.pdf:
+pdf:
 	pdflatex -shell-escape main.tex
