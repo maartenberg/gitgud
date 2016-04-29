@@ -7,7 +7,7 @@
 *.snm
 *.pdf
 
-slides/_minted-main/*
+*/_minted-main/*
 slides/graphs/*.eps
 slides/voorbeelden/basis/laatstekeer.txt
 
