@@ -1,10 +1,14 @@
 \documentclass[9pt,a4paper]{extarticle}
 
 \usepackage[dutch]{babel}
+\usepackage{fourier}
 \usepackage[cm,plain]{fullpage}
 \usepackage{xcolor}
 \usepackage{multicol}
 \usepackage{minted}
+\usepackage{hyperref}
+\usemintedstyle{vs}
+%\setminted{breaklines=true}
 
 \title{Cheatsheet Git}
 \author{Sticky: CommIT}
@@ -18,7 +22,7 @@
 
 \begin{document}
 Let op: plekken in commando's waar je zelf iets in moet vullen worden aangegeven met \shell{$waarde}. Als je dit invoert moet je
-de \shell{$} niet overnemen.
+de \shell{$} niet overnemen. Opties in \shell{[ ]} blokhaken zijn optioneel.
 
 \section*{Instellingen}
 Stel in met \shell{git config --global $optie $waarde}. Laat \shell{--global} weg om alleen in het huidige repository de
@@ -78,5 +82,107 @@ bin/*       # Negeer alle bestanden in de map bin
 	\shell{git log --reverse} 	& Geef een lijst van commits, oudste eerst.\\
 	\shell{git show $id}		& Toon informatie over commit \shell{$id}.
 \end{tabular}
+
+\section*{Terugdraaien}
+\textbf{Denk na wat je doet! De commando's gemerkt met \danger{} gooien data weg!}
+
+\settowidth{\OptieBreed}{\shell{git checkout HEAD $bestand }}
+\begin{tabular}{p{\OptieBreed}p{1ex}p{\linewidth-\OptieBreed-1ex}}
+	\shell{git checkout -- $bestand} 		& \danger{} & Zet \shell{$bestand} terug naar de versie zoals in je
+	laatste commit.\\
+	\shell{git checkout $id $bestand}		& & Zet \shell{$bestand} terug naar de versie zoals in commit \shell{$id}.\\
+	\shell{git checkout HEAD $bestand}		& & Zet \shell{$bestand} terug naar de verzie zoals in je laaste commit.\\
+	\shell{git revert $id}					& & Maak een nieuwe commit die de wijzigingen in \shell{$id} ongedaan maakt.\\
+	\shell{git reset --hard}				& \danger{} & \shell{git checkout --} op al je bestanden. (!)\\
+\end{tabular}
+
+\section*{Untracked bestanden opruimen}
+Met \shell{git clean} kan je bestanden die git niet bijhoudt verwijderen. \textbf{Denk dus na wat je doet!} \shell{git
+clean -n} toont je wat een `echte' clean zou doen, met \shell{-x} en \shell{-d} kan je genegeerde bestanden en
+genegeerde mappen ook verwijderen. \shell{git clean -f [-x] [-d]} voert de verwijdering zonder waarschuwing uit.
+(\danger{})
+
+\section*{Branching}
+\settowidth{\OptieBreed}{\shell{git checkout --no-merged }}
+\begin{tabular}{p{\OptieBreed}p{1ex}p{\linewidth-\OptieBreed-1ex}}
+	\shell{git branch $naam}		&& Maak een nieuwe branch, \shell{$naam}, aan.\\
+	\shell{git checkout $naam}		&& Stel branch \shell{$naam} in als actief (bestanden in map zijn van die branch).\\
+	\shell{git checkout -b $naam}	&& Maak een branch en stel in als actieve branch.\\
+	\shell{git merge $naam}			& \danger{} & Neem alle wijzigingen in branch \shell{$naam} over in de huidige branch.
+										\textbf{Eerst committen!}\\
+	\shell{git branch}				&& Toon alle lokale branches.\\
+	\shell{git branch --no-merged}  && Toon alle branches die commits bevatten die niet in de huidge branch zitten.\\
+	\shell{git branch -d $naam}		&& Verwijder een gemergede branch.
+\end{tabular}
+
+\subsection*{Merge conflict}
+Wanneer wijzigingen in een merge elkaar tegenspreken (bestand in beide branches gewijzigd) heb je een \emph{merge conflict}:
+\begin{enumerate}
+	\item Doe \shell{git status} en kijk welke bestanden conflicteren.
+	\item Open de bestanden en zoek naar \shell{<<<<<}, \shell{=====} of \shell{>>>>>}. (Dit zijn de gebieden die
+		conflicteren.) Los hier het probleem op en verwijder de \shell{<<<}, \shell{===} en \shell{>>>}-regels.
+	\item Wanneer alle conflicten zijn opgelost kan je de bestanden \shell{git add}en, en committen.
+\end{enumerate}
+Dit is niet altijd de handigste manier, vaak kan je beter een visueel programma gebruiken om de conflicten op te lossen.
+Programma's die hiervoor werken zijn o.a. Meld (\url{meldmerge.org}), KDiff3 (\url{kdiff3.sourceforge.net}). Voor alle
+direct ondersteunde programma's kan je \shell{git mergetool --help-tool} doen.
+
+\section*{Samenwerken}
+Een \emph{remote} is een compleet zelfstandig repository met tenminste \'e\'en gedeeld punt in de geschiedenis met jouw
+repository.
+
+\settowidth{\OptieBreed}{\shell{git push --set-upstream $remote $branch}}
+\begin{tabular}{p{\OptieBreed}p{1ex}p{\linewidth-\OptieBreed-1ex}}
+	\shell{git remote -v}				& & Toon alle ingestelde remotes.		\\
+	\shell{git remote add $naam $url}	& & Voeg nieuwe remote toe.				\\
+	\shell{git clone $url [$map]}		& & Maak een kopie van het repository op \shell{$url} (in de map \shell{$map}
+												als opgegeven).\\
+	\shell{git fetch}					& & Zet wijzigingen van een \emph{upstream} remote klaar om te mergen.\\
+	\shell{git merge $naam/$branch}		& & Merge de ge\shell{fetch}te branch naar je lokale branch.\\
+	\shell{git pull}					& & Haal wijzigingen op en merge ze meteen (als mogelijk).\\
+	\shell{git push --set-upstream $remote $branch} & & Maak de branch \shell{$branch} aan op \shell{$remote}, en
+	publiceer je huidige branch hierop. (Hierna ook de standaardbestemming voor \shell{git push}.)\\
+	\shell{git push}					& & Publiceer je wijzigingen in een remote.
+\end{tabular}
+
+\section*{Zoeken}
+Git bevat een optie om in bestanden naar tekst te zoeken: \shell{git grep $tekst}.
+
+\settowidth{\OptieBreed}{\shell{git grep $tekst $map-of-bestand}}
+\begin{tabular}{p{\OptieBreed}p{\linewidth-\OptieBreed-1ex}}
+	\shell{git grep $tekst} &
+		Zoek in de huidige map en submappen naar \shell{$tekst}. \\
+	\shell{git grep -n $tekst} &
+		Als vorige, en print naast de bestandsnaam het regelnummer. \\
+	\shell{git grep -i $tekst} &
+		Zoek hoofdletterongevoelig naar \shell{$tekst}, combineerbaar met -n.\\
+	\shell{git grep $tekst $map-of-bestand} &
+		Zoek alleen in \shell{$map-of-bestand}.
+\end{tabular}
+
+\section*{Aliassen}
+Je kan je eigen \shell{git dinges}-commando's maken met \shell{git config --global alias.$aliasnaam "$aliasinhoud"}.
+\shell{$aliasinhoud} moet een git-commando zijn (zonder \shell{git} ervoor). Een paar handige voorbeelden (alles begint
+met \shell{git config --global}):
+
+\settowidth{\OptieBreed}{\shell{alias.overzicht "log --all --graph --decorate --oneline"}}
+\begin{tabular}{p{\OptieBreed}p{\linewidth-\OptieBreed-1ex}}
+	\shell{alias.overzicht "log --all --graph --decorate --oneline"} &
+		\shell{git overzicht} toont een visueel overzicht van je geschiedenis en hoe je branches erbij staan. \\
+	\shell{alias.unstage "reset HEAD"} &
+		\shell{git unstage} maakt \shell{git add} ongedaan.\\
+	\shell{alias.zoek "grep -nir"} &
+		\shell{git zoek $tekst $map} zoekt hoofdletterongevoelig naar \shell{$tekst} in \shell{$map}.
+\end{tabular}
+
+\section*{Meer handige trucjes die je zelf uit moet zoeken}
+\begin{description}
+	\item[Submodules] Zelfstandige git-repositories insluiten in een ander repository (\shell{git help submodule}).
+	\item[git stash] Je wijzigingen tijdelijk `opzij' zetten met een handig commando (\shell{git help stash}).
+	\item[Hooks] Wanneer bepaalde dingen gebeuren (commit, push, pull, etc.) automatisch een script uitvoeren.
+		(\shell{git help hooks})
+	\item[Travis CI] Wanneer je je code pusht, automatisch tests uitvoeren of andere scripts draaien op een andere
+		computer. (\url{travis-ci.com}, gratis voor studenten via \url{education.github.com/pack})
+\end{description}
 
 \end{document}
