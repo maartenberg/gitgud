@@ -1,0 +1,82 @@
+\documentclass[9pt,a4paper]{extarticle}
+
+\usepackage[dutch]{babel}
+\usepackage[cm,plain]{fullpage}
+\usepackage{xcolor}
+\usepackage{multicol}
+\usepackage{minted}
+
+\title{Cheatsheet Git}
+\author{Sticky: CommIT}
+\date{}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+\newcommand{\shell}[1]{\mintinline{bash}{#1}}
+\newcommand{\lett}[1]{\texttt{#1}}
+
+\begin{document}
+Let op: plekken in commando's waar je zelf iets in moet vullen worden aangegeven met \shell{$waarde}. Als je dit invoert moet je
+de \shell{$} niet overnemen.
+
+\section*{Instellingen}
+Stel in met \shell{git config --global $optie $waarde}. Laat \shell{--global} weg om alleen in het huidige repository de
+instelling aan te passen. Lees alle wijzigingen (die de commando's aanbrengen)  met \shell{less ~/.gitconfig} .
+
+\newlength{\OptieBreed}
+\settowidth{\OptieBreed}{\shell{commit.verbose} }
+\begin{tabular}{p{\OptieBreed}p{\linewidth-\OptieBreed}}
+	\textbf{Optie}			& \textbf{Wat doet het}\\ \hline
+	\shell{user.name}		& Je naam, zichtbaar in alle commits.\\
+	\shell{user.email}		& Email, zichtbaar in alle commits.\\
+	\shell{core.editor} 	& Editor voor commit messages.\\
+	\shell{color.ui}		& Zet op \shell{auto} voor gekleurde tekst.\\
+	\shell{commit.verbose}  & Zet op \shell{true} voor een overzicht van alle veranderingen bij een commit message schrijven.
+\end{tabular}
+
+\section*{Basisacties}
+\settowidth{\OptieBreed}{\shell{git reset HEAD $file1 [$file2..]}}
+\begin{tabular}{p{\OptieBreed}p{\linewidth-\OptieBreed}}
+	\textbf{Commando}					& \textbf{Wat doet het}\\ \hline
+	\shell{git status}					& Geef algemene informatie over de toestand van je repository.							\\
+	\shell{git init}					& Maak nieuw, leeg repository in huidige map.											\\
+	\shell{git clone $url}				& Clone het repository dat kan worden gevonden op \shell{$url}. 						\\
+	\shell{git add $file1 [$file2..]} 	& Neem bestanden op in de volgende commit. (Zowel wijzigingen als nieuwe bestanden.)	\\
+	\shell{git reset HEAD $file1 [$file2..]} & Maak \shell{git add} ongedaan voor gegeven bestanden.							\\
+	\shell{git reset}					& Maak alle \shell{git add}'s ongedaan.													\\
+	\shell{git commit}					& Maak een commit aan, opent je ingestelde editor voor een bericht.						\\
+	\shell{git commit -m $tekst}		& Maak een commit aan met een vooringesteld bericht. (Let op aanhalingstekens rond je
+											bericht!)																			\\
+	\shell{git commit --amend}			& Pas een zojuist gemaakte commit aan. \textbf{Doe dit alleen bij ongedeelde commits!}
+\end{tabular}
+
+\section*{Bestanden negeren}
+Je kan git aangeven bestanden te negeren door een bestand met filters aan te maken:
+\begin{itemize}
+	\item in een map in je repository, met als naam \shell{.gitignore}, voor iedereen die het repository gebruikt en voor alle
+		submappen en bestanden in de map waar het bestand staat.
+	\item in \shell{$repo/.git/info} (verborgen map), met als naam \shell{exclude}, voor jou alleen, automatisch voor het gehele repository.
+	\item in \shell{~/.config/git}, met als naam \shell{exclude}, voor jou alleen, voor alle repositories op die computer.
+\end{itemize}
+Zie \shell{git help ignore} voor alle mogelijkheden met filters.
+\begin{minted}{bash}
+bin/*       # Negeer alle bestanden in de map bin
+*.exe       # Negeer alle bestanden die eindigen op .exe, overal
+!dinges.exe # ...Maar negeer dinges.exe niet
+\end{minted}
+
+\section*{Geschiedenis}
+\settowidth{\OptieBreed}{\shell{git diff $id1..$id2 }}
+\begin{tabular}{p{\OptieBreed}p{\linewidth-\OptieBreed}}
+	\shell{git diff}			& Toon alle verschillen tussen je (niet-gestagede) bestanden en de laatste commit.\\
+	\shell{git diff --staged} 	& Toon wat er klaarstaat om gecommit te worden.\\
+	\shell{git diff $id1..$id2} & Toon de precieze verschillen tussen commit \shell{$id1} en \shell{$id2}.\\
+	\shell{git diff $id}		& Toon de precieze verschillen tussen commit \shell{$id} en de nieuwste (\shell{HEAD}).\\
+	\shell{git show}			& Toon informatie over de laatste commit.\\
+	\shell{git log}				& Geef een lijst van commits, nieuwste eerst.\\
+	\shell{git log --reverse} 	& Geef een lijst van commits, oudste eerst.\\
+	\shell{git show $id}		& Toon informatie over commit \shell{$id}.
+\end{tabular}
+
+\end{document}
