@@ -11,11 +11,13 @@ addons:
     - texlive-humanities
     - latex-beamer
     - lmodern
+    - latexmk
     - python-pygments
     - graphviz
 before_script:
   - "wget https://github.com/gpoore/minted/releases/download/v2.1/minted-2.1.zip"
   - "unzip -j minted-2.1.zip minted-2.1/minted.sty -d ."
+  - "unzip -j minted-2.1.zip minted-2.1/minted.sty -d cheatsheet"
 script:
     - make diagrams
     - make main.pdf
