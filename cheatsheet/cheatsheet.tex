@@ -2,13 +2,12 @@
 
 \usepackage[dutch]{babel}
 \usepackage{fourier}
-\usepackage[cm,plain]{fullpage}
+\usepackage[cm,empty]{fullpage}
 \usepackage{xcolor}
 \usepackage{multicol}
 \usepackage{minted}
 \usepackage{hyperref}
 \usemintedstyle{vs}
-%\setminted{breaklines=true}
 
 \title{Cheatsheet Git}
 \author{Sticky: CommIT}
@@ -34,7 +33,7 @@ instelling aan te passen. Lees alle wijzigingen (die de commando's aanbrengen)  
 	\textbf{Optie}			& \textbf{Wat doet het}\\ \hline
 	\shell{user.name}		& Je naam, zichtbaar in alle commits.\\
 	\shell{user.email}		& Email, zichtbaar in alle commits.\\
-	\shell{core.editor} 	& Editor voor commit messages.\\
+	\shell{core.editor} 	& Editor voor commit messages. Zet dit op \texttt{nano} voor het minste gedoe.\\
 	\shell{color.ui}		& Zet op \shell{auto} voor gekleurde tekst.\\
 	\shell{commit.verbose}  & Zet op \shell{true} voor een overzicht van alle veranderingen bij een commit message schrijven.
 \end{tabular}
@@ -95,6 +94,9 @@ bin/*       # Negeer alle bestanden in de map bin
 	\shell{git revert $id}					& & Maak een nieuwe commit die de wijzigingen in \shell{$id} ongedaan maakt.\\
 	\shell{git reset --hard}				& \danger{} & \shell{git checkout --} op al je bestanden. (!)\\
 \end{tabular}
+
+Tip: Bij de meeste dingen waar je meerdere bestanden op mag geven kan je ook een mapnaam opgeven, om
+alle bestanden in deze map in \'e\'en keer aan te merken. \texttt{.} slaat op de huidige map.
 
 \section*{Untracked bestanden opruimen}
 Met \shell{git clean} kan je bestanden die git niet bijhoudt verwijderen. \textbf{Denk dus na wat je doet!} \shell{git
