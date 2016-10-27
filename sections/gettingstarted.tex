@@ -117,6 +117,13 @@ bin/*
 		\item Alleen op je eigen kopie van repo
 		\item Zelfde syntax als \texttt{.gitignore}
 	\end{itemize}
+
+	Wat te negeren:
+	\begin{itemize}
+		\item Gegenereerde resultaten (binaries, logs)
+		\item Gevoelige informatie (wanneer gedeeld)
+		\item Heel grote bestanden die veel veranderen (Github LFS)
+	\end{itemize}
 \end{frame}
 
 \subsection{Geschiedenis bekijken}
@@ -124,8 +131,11 @@ bin/*
 \begin{frame}{log}
 	\begin{tabular}{ll}
 		\texttt{git log}& Bekijk geschiedenis van commits (\texttt{--reverse})\\
+		\texttt{git log id1..id2} & Alle geschiedenis tussen \texttt{id1} en \texttt{id2}\\
 		\texttt{git show}& Bekijk veranderingen in commit, standaard nieuwste
 	\end{tabular}
+
+	De ID's uit \texttt{log} kan je gebruiken in \texttt{git diff}:
 \end{frame}
 
 % git diff
@@ -133,8 +143,10 @@ bin/*
 	\begin{tabular}{ll}
 		\texttt{git diff}&Toon veranderingen in tracked files (unstaged)\\
 		\texttt{git diff --staged}&Toon veranderingen klaargezet voor commit\\
-		\texttt{git diff HEAD\^}&Toon veranderingen sinds vorige commit
+		\texttt{git diff HEAD\^}&Toon veranderingen sinds vorige commit\\
+		\texttt{git diff id1 id2}&Toon verschil tussen commit \texttt{id1} en \texttt{id2}
 	\end{tabular}
+	{\footnotesize Waar je id's uit \texttt{git log} haalt. }
 \end{frame}
 
 % git show
@@ -146,7 +158,7 @@ bin/*
 \end{frame}
 
 \subsection{Overzicht}
-\begin{frame}{Overzicht}
+\begin{frame}{Overzicht (doemoment!)}
 	{ \footnotesize
 	\begin{tabular}{ll}
 		\texttt{git init}					& maak een nieuwe repository \\
