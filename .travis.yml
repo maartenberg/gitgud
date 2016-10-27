@@ -25,6 +25,7 @@ script:
     - cd cheatsheet
     - make cheatsheet.pdf
     - make cheatsheet.pdf
+    - cd ..
 deploy:
   provider: releases
   api_key:
