@@ -11,7 +11,7 @@
 	\end{enumerate}
 	Als het goed is zie je nu \alert{niet}:
 	\begin{minted}[bgcolor=light-gray]{text}
-fatal: Not a git repository or 
+fatal: Not a git repository or
 	any of the parent directories: .git
 	\end{minted}
 \end{frame}
@@ -32,6 +32,17 @@ fatal: Not a git repository or
 [master 1234abc] Eerste commit
 x files added
 	\end{minted}
+\end{frame}
+
+\begin{frame}{Achter de schermen}
+	\begin{enumerate}
+		\item Beginsituatie voor de graaf gemaakt, 0 nodes
+		\item Bestanden in staging area geplaatst
+		\item Nieuwe node aan de graaf toegevoegd met 0 verwijzingen
+	\end{enumerate}
+	\begin{center}
+		\includegraphics[width=.3\textwidth]{graphs/basis0.eps}
+	\end{center}
 \end{frame}
 
 \begin{frame}{Bestanden ontstagen}
