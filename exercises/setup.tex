@@ -77,16 +77,18 @@ De volgende instellingen zijn niet verplicht, maar maken het leven wel
 makkelijker:
 
 \begin{center}
-	\begin{tabular}{ll}
+	\begin{tabular}{p{.2\textwidth}p{.8\textwidth}}
 		\textbf{Instelling} & \textbf{Waarde} \\ \hline
 		\texttt{core.editor} & Zie \ref{kieseditor}, stelt de standaard
 		teksteditor in.\\
 		\texttt{color.ui} & \cmd{auto} voor kleuren in de uitvoer van Git
 		(leest makkelijker) \\
 		\texttt{credential.helper} & Zet eenmaal op \cmd{"cache"}, en dan op
-		\cmd{"cache --timeout=3600"} \footnote{Dit zorgt ervoor dat Git een uur
-		lang je wachtwoord onthoudt als je dat hebt ingevoerd.}
+		\cmd{"cache --timeout=3600"} \footnotemark{}
 	\end{tabular}
+	\footnotetext{Dit zorgt ervoor dat Git een uur lang je wachtwoord onthoudt
+		als je dat hebt ingevoerd.}
+
 \end{center}
 
 \subsubsection{\texttt{core.editor} instellen}
@@ -108,7 +110,7 @@ werken, dan kan je \texttt{notepad} instellen.) Hieronder worden de waarden voor
 een aantal veelgebruike editors weergegeven, als je een andere editor hebt of
 wilt gebruiken zal je hier zelf naar op zoek moeten gaan.
 
-(Verander deze waarde dus door \cmd{git config --global core.editor {{waarde}}}
+(Verander deze waarde dus door \cmd{git config --global core.editor $waarde}
 uit te voeren.)
 
 \begin{center}
@@ -127,7 +129,6 @@ uit te voeren.)
 \begin{enumerate}
 	\item Stel je naam en emailadres in via \cmd{git config --global user.name}
 		en \cmd{git config --global user.email}.
-	\item Zet je editor op iets anders dan Vim (\cmd{git config --global
-		core.editor})
+	\item Zet je editor op iets anders dan Vim: \cmd{git config --global
+		core.editor $waarde}
 \end{enumerate}
-
