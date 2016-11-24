@@ -1,4 +1,19 @@
 \section[Structuur]{Structuur van Git}
+\subsection{DAG}
+\begin{frame}{Graaf}
+	Git gebruikt een \emph{Directed Acyclic Graph}/ gerichte acyclische graaf:
+	\begin{itemize}
+		\item Eindig veel bolletjes: \emph{commits}
+		\item Bolletjes wijzen naar hun voorganger, maar niet andersom
+		\item Er kunnen geen loops inzitten
+		\item Verwijzingen naar de commits: \emph{refs}
+	\end{itemize}
+
+	\begin{center}
+		\includegraphics[width=.6\textwidth]{graphs/dagview.eps}
+	\end{center}
+\end{frame}
+
 \subsection{Locaties}
 \begin{frame}
 	3 plekken waar je gegevens zitten:\\

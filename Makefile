@@ -11,3 +11,4 @@ diagrams: $(diagram_sources)
 	for file in graphs/basis*.gv; do\
 		dot -Teps -o graphs/`basename $$file .gv`.eps $$file;\
 	done
+	dot -Teps -o graphs/dagview.eps graphs/dagview.gv
