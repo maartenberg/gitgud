@@ -1,14 +1,35 @@
 \section[Get git]{Installatie}
 
+\subsection{Download}
 \begin{frame}
 	\begin{itemize}
-		\item Git moet gedownload worden: \url{https://git-scm.com}.
-		\item Twee essenti\"ele instellingen:
+		\item Windows: \url{https://git-scm.com/download/win}
 			\begin{itemize}
-				\item Je naam (\texttt{user.name})
-				\item Je e-mailadres (\texttt{user.email}, niet gecheckt)
-				\item Essenti\"eel omdat aan iedere commit toegevoegd!
+				\item \small{Maak snelkoppeling naar git-bash in \tt{Program Files/Git/cmd}}
 			\end{itemize}
+		\item Mac: \url{https://git-scm.com/download/mac}
+		\item Linux: gebruik je package manager
 	\end{itemize}
-	Zie de vaksite voor uitgebreidere instructies en `oefeningen'.
+\end{frame}
+
+\subsection{Configureren}
+\begin{frame}{Instellen (doemoment!)}
+	Installeer Git van de site \url{https://git-scm.com}\\
+
+	Open Git Bash en voer in wie je bent:
+	\begin{itemize}
+		\item \tt{git config --global user.name "Lars Verhoeven"}
+		\item \tt{git config --global user.email "user@example.com"}
+	\end{itemize}
+	{\small\alert{Wordt aan iedere commit verbonden die je maakt!}}\\
+
+	\texttt{git config --global color.ui auto}\\
+	\texttt{git config --global core.editor nano}\\
+
+	Als je minder vaak om je wachtwoord wil worden gevraagd (bij externe servers):
+
+	\begin{itemize}
+		\item \tt{git config --global credential.helper cache}
+		\item \tt{git config --global credential.helper "cache --timeout=3600"}
+	\end{itemize}
 \end{frame}
