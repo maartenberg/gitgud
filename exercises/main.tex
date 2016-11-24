@@ -1,0 +1,37 @@
+\documentclass[a4paper,dutch]{article}
+
+\usepackage{babel}
+\usepackage{fullpage}
+\usepackage{hyperref}
+\usepackage{minted}
+
+\newcommand{\cmd}[1]{\mintinline{bash}{#1}}
+
+\title{Git gud - oefeningen}
+\author{Sticky: CommIT}
+
+\begin{document}
+\maketitle
+
+Deze opdrachten proberen je een basiskennis van Git bij te brengen, door je een
+aantal concepten van Git te laten zien en uit te laten proberen. De opdrachten
+zaten oorspronkelijk in de presentatie van Git Gud als `doemomentjes', maar het
+was niet haalbaar om dit met een hele collegezaal te doen.
+
+Mocht je vragen hebben over de opdrachten of een ander aspect van Git, dan kan
+je in de Sticky-kamer langslopen (er is meestal wel iemand die je kan helpen).
+
+\subsection*{Notatie}
+Bij deze voorbeelden ga je tekst in de standaard Git-shell (\texttt{bash} op
+macOS en Linux, Git Bash op Windows) moeten invoeren. Deze teksten staan
+aangegeven in \texttt{een lettertype met vaste breedte, zoals hier}, en kunnen
+letterlijk overgenomen worden. De enige uitzondering is een waarde waar een
+dollarteken voor staat, zoals \cmd{$naam}, dit moet je namelijk vervangen met
+een waarde die je zelf kiest. Hierbij laat je wanneer je het commando uitvoert
+het dollarteken weg.
+
+Wanneer je een waarde hebt ingevoerd moet je op Enter drukken om het commando
+uit te voeren, en kan je weer een nieuw commando invoeren als je een regel ziet
+verschijnen die eindigt op een dollarteken.
+\input{setup.tex}
+\end{document}

@@ -1,0 +1,124 @@
+\section{Git downloaden en instellen}
+
+\subsection{Downloaden en installeren}
+Als eerste zal je Git moeten installeren voor je het kan gebruiken. Git is te
+downloaden van de offici\"ele site, \url{https://git-scm.com/downloads}.
+
+Hiernaast is het aan te raden om ook een GUI-client te installeren, zodat je
+niet eeuwig commando's blijft invoeren. Dit is niet vereist voor deze opdrachten
+(er wordt bijna alleen maar command-line gebruikt, omdat dit op alle platforms
+werkt), maar wordt zeker door nieuwere gebruikers als prettiger ervaren.
+
+Een compleet overzicht van de clients voor jouw platform kan je bekijken op
+\url{https://git-scm.com/downloads/guis}, clients die op alle drie de platforms
+(Windows, macOS, Linux) werken en worden aangeraden zijn:
+
+\begin{itemize}
+	\item SmartGit, \url{https://www.syntevo.com/smartgit/}
+	\item GitKraken, \url{https://www.gitkraken.com/}
+\end{itemize}
+
+\subsection{Nuttige instellingen}
+Git heeft wat informatie nodig om zijn werk te kunnen doen, en hiernaast zijn er
+ook een aantal configuratieopties die het leven makkelijker maken.
+
+De instellingen van Git worden beheerd via het commando \cmd{git config}.
+Instellingen kunnen op twee niveaus worden aangepast: voor het repository waar
+je in aanwezig bent (dus voor \'e\'en project), of voor alle projecten die je
+met jouw gebruiker bewerkt. Wanneer je een instelling hebt aangepast krijg je
+standaard geen bevestiging dat het is gelukt (geen tekst en gelijk weer
+een nieuw commando kunnen invoeren), dit is normaal.
+
+Om een instelling op te vragen kan je \cmd{git config --get $instelling}
+uitvoeren, om de waarde die aan \cmd{$instelling} is gekoppeld op te vragen. Als
+er geen waarde is ingesteld zal geen tekst worden weergegeven.
+
+Om een instelling voor het huidige project aan te passen, moet je in een map die
+door Git wordt beheerd (\emph{repository}) zitten, en dan het commando \cmd{git
+config $instelling $waarde} uitvoeren, waarbij je \cmd{$instelling} en
+\cmd{$waarde} vervangt door de naam van de instelling en de waarde die de
+instelling moet krijgen.
+
+Als je een instelling voor al je repositories wilt aanpassen, kan je in een
+willekeurige map het commando \cmd{git config --global $instelling $waarde}
+uitvoeren. Globale instellingen worden vervangen door plaatselijke instellingen,
+hierdoor kan je bijvoorbeeld voor het ene repository je universiteitsmailadres
+gebruiken en voor een ander project je persoonlijke mailadres.
+
+\subsubsection{Verplichte instellingen}
+De volgende instellingen zijn verplicht, en kunnen zoals boven beschreven worden
+aangepast met het commando \cmd{git config}. Het is aan te raden om dit met de
+\texttt{--global}-optie uit te voeren, omdat je anders voor ieder project dit
+moet instellen.
+
+\begin{center}
+\begin{tabular}{ll}
+	\textbf{Instelling}	& \textbf{Waarde} \\ \hline
+	\texttt{user.name} & De naam die je aan je commits wilt verbinden.\\
+	\texttt{user.email} & Het emailadres dat je aan je commits wilt verbinden.
+\end{tabular}
+\end{center}
+
+Deze instellingen zijn verplicht omdat de waarden die je hier instelt aan alle
+commits die je maakt worden verbonden! Denk dus goed na over wat je hier
+invoert, want als je eenmaal geschiedenis hebt geschreven is het niet mogelijk
+om dit gemakkelijk aan te passen! (Het \emph{kan} wel, maar levert heel veel
+gezeur op\ldots)
+
+Bij het instellen moeten de waarden ook met aanhalingstekens worden omringd, dus
+zo:
+\begin{minted}{shell-session}
+$ git config --global user.name "Jouw naam hier"
+$ git config --global user.email "grappig@email.adres"
+\end{minted}
+
+\subsubsection{Handige instellingen}
+De volgende instellingen zijn niet verplicht, maar maken het leven wel
+makkelijker:
+
+\begin{center}
+	\begin{tabular}{ll}
+		\textbf{Instelling} & \textbf{Waarde} \\ \hline
+		\texttt{core.editor} & Zie \ref{kieseditor}, stelt de standaard
+		teksteditor in.\\
+		\texttt{color.ui} & \cmd{auto} voor kleuren in de uitvoer van Git
+		(leest makkelijker) \\
+		\texttt{credential.helper} & Zet eenmaal op \cmd{"cache"}, en dan op
+		\cmd{"cache --timeout=3600"} \footnote{Dit zorgt ervoor dat Git een uur
+		lang je wachtwoord onthoudt als je dat hebt ingevoerd.}
+	\end{tabular}
+\end{center}
+
+\subsubsection{\texttt{core.editor} instellen}
+\label{kieseditor}
+Standaard gebruikt Git een enigzins `aparte' editor om je berichten in te laten
+voeren en tekst direct te laten bewerken, namelijk Vim. Dit is ontzettend leuk
+als je weet hoe het werkt, maar anders krijg je waarschijnlijk niet veel nuttigs
+eruit.
+
+Op macOS en Linux kan je de waarde veilig op \cmd{nano} zetten, dit roept een
+standaard-teksteditor aan die wel geschikt is voor nieuwe gebruikers. Als je een
+wat geavanceerdere editor wilt hebben kan je Atom installeren
+(\url{https://atom.io}), en vervolgens de waarde op \cmd{"atom --wait"}
+zetten (inclusief aanhalingstekens).
+
+Op Windows is het iets lastiger om het te laten werken, je hebt namelijk het
+volledige pad naar je editor nodig. (Behalve als je Kladblok/Notepad goed genoeg vindt
+werken, dan kan je \texttt{notepad} instellen.) Hieronder worden de waarden voor
+een aantal veelgebruike editors weergegeven, als je een andere editor hebt of
+wilt gebruiken zal je hier zelf naar op zoek moeten gaan.
+
+(Verander deze waarde dus door \cmd{git config --global core.editor {{waarde}}}
+uit te voeren.)
+
+\begin{center}
+	\begin{tabular}{p{0.2\textwidth}p{0.8\textwidth}}
+		\textbf{Editor} & \textbf{Waarde} \\ \hline
+		Notepad++ & \cmd{"'C:/Program Files/Notepad++/notepad++.exe'
+			-multiInst -notabbar -nosession -noPlugin"} \\
+		Notepad++, 64-bits systeem & \cmd{"'C:/Program Files
+			(x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nosession
+			-noPlugin" }\\
+		Atom & \cmd{"atom --wait"}
+	\end{tabular}
+\end{center}
