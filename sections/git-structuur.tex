@@ -23,7 +23,8 @@
 		 Staging area				& bestanden die je gaat committen\\
 		 Repository / \texttt{.git/}&Bevat metadata, objecten
 	\end{tabular}
-	Alleen bestanden in `normale' map aanpassen, rest doet Git voor je!
+
+	Bestanden in working directory pas je aan, de rest doet Git!
 \end{frame}
 
 \subsection{Gegevensstructuur}
@@ -55,7 +56,7 @@
 		\item Bewerk bestanden (meestal tot `werkend' punt)
 		\item \texttt{git add}: Bestanden naar staging area
 		\begin{itemize}
-			\item (\texttt{git status}, \texttt{git diff --staged} helpers)
+			\item \texttt{git status}, \texttt{git diff --staged}
 		\end{itemize}
 		\item Zeker? $\rightarrow$ \texttt{git commit}
 	\end{enumerate}
