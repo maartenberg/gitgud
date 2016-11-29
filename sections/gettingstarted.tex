@@ -2,22 +2,18 @@
 
 \subsection{Repository aanmaken}
 \begin{frame}[fragile]{Repository maken}
-	\begin{enumerate}
-		\item Open terminal (windows: \alert{git-bash})
-		\item \texttt{cd} naar map die je wil bijhouden
-			(of \texttt{mkdir} een nieuwe)
-		\item \texttt{git init}
-		\item \texttt{git status}
-	\end{enumerate}
-	Als het goed is zie je nu \alert{niet}:
-	\begin{minted}[bgcolor=light-gray]{text}
-fatal: Not a git repository or
-	any of the parent directories: .git
-	\end{minted}
+	Vertel Git de map waar je bent bij te houden:\\
+
+	\texttt{git init}\\
+
+	Maak kopie van bestaand repository:\\
+
+	\texttt{git clone URL}
 \end{frame}
 
 \subsection{Bestanden laten bijhouden}
-\begin{frame}[fragile]{Je eerste commit}
+\begin{frame}[fragile]{Je eerste commit (geen doemoment!)}
+	Edit-add-commit:
 	\begin{enumerate}
 		\item \texttt{git status}: overzicht van wat afwijkt van opgeslagen
 		\item Bekijk 'untracked files'
@@ -27,7 +23,7 @@ fatal: Not a git repository or
 		\item \texttt{git commit}, voer bericht in, opslaan en sluiten\\
 			(of: \texttt{git commit -m "Eerste commit"})
 	\end{enumerate}
-	Resultaat: 
+	Resultaat:
 	\begin{minted}[bgcolor=light-gray]{text}
 [master 1234abc] Eerste commit
 x files added
@@ -185,10 +181,9 @@ bin/*
 		\texttt{git show id}				& Bekijk commit \texttt{id} in detail
 	\end{tabular}
 	}
-	Doen:
 	\begin{enumerate}
-		\item Maak een lege map met repo
-		\item Download \url{https://j.mp/gitgud-ex1}
+		\item Maak een \emph{lege} map met repo
+		\item \emph{Plak} inhoud \url{https://j.mp/gitgud-ex1} in bestand
 		\item Add en commit
 		\item Bug: 16 moet \texttt{`date +\%d`} zijn, repareer en commit
 		\item \texttt{bash simpelscript.sh}
