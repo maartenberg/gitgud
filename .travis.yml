@@ -7,6 +7,8 @@ addons:
     - texlive-fonts-extra
     - dvipng
     - texlive-latex-recommended
+    - texlive-generic-recommended
+    - texlive-lang-european
     - texlive-font-utils
     - texlive-humanities
     - latex-beamer
