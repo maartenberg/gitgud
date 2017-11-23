@@ -6,6 +6,8 @@
 *.out
 *.snm
 *.pdf
+*.fls
+*.fdb_latexmk
 
 _minted-main/*
 graphs/*.eps
