@@ -6,7 +6,7 @@
 # Hieronder volgt de uitleg over hoe dit bestand is opgebouwd.
 
 
-tex_sources := $(wildcard sections/*.tex) 
+tex_sources := $(wildcard sections/*.tex)
 # Deze variabele bevat alle .tex-bestanden onder sections.
 
 # Het eerste `target` in het bestand wordt standaard uitgevoerd wanneer `make`
@@ -14,9 +14,9 @@ tex_sources := $(wildcard sections/*.tex)
 # `main.pdf` en `exercises/oefeningen.pdf` worden gemaakt.
 all: main.pdf exercises/oefeningen.pdf
 
-# 'main.pdf' moet worden bijgewerkt als een of meer van de volgende bestanden veranderd zijn:
+# 'main.pdf' moet worden bijgewerkt als een of meer van de volgende bestanden veranderd zijn,
+# met het commando dat hieronder ingesprongen staat:
 main.pdf: main.tex $(tex_sources) diagrams
-	# En dat doe je met dit commando:
 	latexmk -pdf -pdflatex="pdflatex -shell-escape -interaction=nonstopmode" main.tex
 
 # Helpercommando om automatisch bij te werken bij veranderingen in de .tex-bestanden.
