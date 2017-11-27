@@ -6,6 +6,8 @@
 
 	\texttt{git init}\\
 
+	Of:\\
+
 	Maak kopie van bestaand repository:\\
 
 	\texttt{git clone URL}
@@ -42,7 +44,7 @@ x files added
 \end{frame}
 
 \begin{frame}{Bestanden ontstagen}
-	\texttt{git add} is ongedaan te maken:\\
+	\texttt{git add} is ongedaan te maken (voordat je hebt ge\texttt{commit}):\\
 	\texttt{git reset HEAD <bestand>}\\
 	(Zie ook de tekst van \texttt{git status})
 \end{frame}
@@ -53,10 +55,10 @@ x files added
 		\item Commit message nog aanpassen
 		\item Files die niet gestaged waren
 	\end{itemize}
-	\alert{Commit moet nieuwste en niet gedeeld zijn}
+	\alert{Commit moet nieuwste en niet gedeeld zijn!}
 \end{frame}
 
-\subsubsection{Hoe verder?}
+\subsubsection{Verder bouwen aan je geschiedenis}
 \begin{frame}{Meerdere commits}
 	\begin{center}
 		\includegraphics[width=.7\textwidth]{graphs/basis1.eps}<1>
@@ -101,7 +103,7 @@ x files added
 \begin{frame}[fragile]{Bestanden negeren}
 	\begin{itemize}
 		\item \texttt{git status} geeft onbekende bestanden altijd aan
-		\item Oplossing 1: \texttt{.gitignore}:
+		\item Oplossing: \texttt{.gitignore}:
 	\end{itemize}
 	\begin{minted}[bgcolor=light-gray]{text}
 # alle bestanden in de map bin
@@ -127,7 +129,7 @@ bin/*
 	Wat te negeren:
 	\begin{itemize}
 		\item Gegenereerde resultaten (binaries, logs)
-		\item Gevoelige informatie (wanneer gedeeld)
+		\item Gevoelige informatie (API keys, \ldots)
 		\item Heel grote bestanden die veel veranderen (Github LFS)
 	\end{itemize}
 \end{frame}
