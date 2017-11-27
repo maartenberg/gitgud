@@ -1,5 +1,6 @@
 \documentclass[9pt,a4paper]{extarticle}
 
+\usepackage[utf8]{inputenc}
 \usepackage[dutch]{babel}
 \usepackage{fourier}
 \usepackage[cm,empty]{fullpage}
@@ -8,6 +9,8 @@
 \usepackage{minted}
 \usepackage{hyperref}
 \usemintedstyle{vs}
+
+\definecolor{light-gray}{gray}{0.90}
 
 \title{Cheatsheet Git}
 \author{Sticky: CommIT}
@@ -31,9 +34,9 @@ instelling aan te passen. Lees alle wijzigingen (die de commando's aanbrengen)  
 \settowidth{\OptieBreed}{\shell{commit.verbose} }
 \begin{tabular}{p{\OptieBreed}p{\linewidth-\OptieBreed}}
 	\textbf{Optie}			& \textbf{Wat doet het}\\ \hline
-	\shell{user.name}		& Je naam, zichtbaar in alle commits.\\
-	\shell{user.email}		& Email, zichtbaar in alle commits.\\
-	\shell{core.editor} 	& Editor voor commit messages. Zet dit op \texttt{nano} voor het minste gedoe.\\
+	\shell{user.name}		& Je naam, zichtbaar in alle commits. Verplicht!\\
+	\shell{user.email}		& Email, zichtbaar in alle commits. Verplicht!\\
+	\shell{core.editor} 	& Editor voor commit messages. Zet op \texttt{"{}atom --wait"} (Download Atom: \url{https://atom.io}).\\
 	\shell{color.ui}		& Zet op \shell{auto} voor gekleurde tekst.\\
 	\shell{commit.verbose}  & Zet op \shell{true} voor een overzicht van alle veranderingen bij een commit message schrijven.
 \end{tabular}
@@ -55,15 +58,14 @@ instelling aan te passen. Lees alle wijzigingen (die de commando's aanbrengen)  
 \end{tabular}
 
 \section*{Bestanden negeren}
-Je kan git aangeven bestanden te negeren door een bestand met filters aan te maken:
+Je kan Git aangeven bestanden te negeren door een bestand met filters op een van deze plekken aan te maken:
 \begin{itemize}
-	\item in een map in je repository, met als naam \shell{.gitignore}, voor iedereen die het repository gebruikt en voor alle
-		submappen en bestanden in de map waar het bestand staat.
-	\item in \shell{$repo/.git/info} (verborgen map), met als naam \shell{exclude}, voor jou alleen, automatisch voor het gehele repository.
-	\item in \shell{~/.config/git}, met als naam \shell{exclude}, voor jou alleen, voor alle repositories op die computer.
+	\item in een map in je repository, met als naam \shell{.gitignore}, voor iedereen die het repository gebruikt en
+		voor alle mappen/bestanden in en onder de map waar het filterbestand staat.
+	\item in de verborgen map \shell{.git/info} in de hoofdmap van je project, voor jou alleen.
 \end{itemize}
-Zie \shell{git help ignore} voor alle mogelijkheden met filters.
-\begin{minted}{bash}
+Zie \shell{git help ignore} voor alle mogelijkheden met filters. Voorbeeldfilterbestand:
+\begin{minted}[bgcolor=light-gray]{bash}
 bin/*       # Negeer alle bestanden in de map bin
 *.exe       # Negeer alle bestanden die eindigen op .exe, overal
 !dinges.exe # ...Maar negeer dinges.exe niet
@@ -99,10 +101,14 @@ Tip: Bij de meeste dingen waar je meerdere bestanden op mag geven kan je ook een
 alle bestanden in deze map in \'e\'en keer aan te merken. \texttt{.} slaat op de huidige map.
 
 \section*{Untracked bestanden opruimen}
-Met \shell{git clean} kan je bestanden die git niet bijhoudt verwijderen. \textbf{Denk dus na wat je doet!} \shell{git
-clean -n} toont je wat een `echte' clean zou doen, met \shell{-x} en \shell{-d} kan je genegeerde bestanden en
-genegeerde mappen ook verwijderen. \shell{git clean -f [-x] [-d]} voert de verwijdering zonder waarschuwing uit.
-(\danger{})
+Met \shell{git clean} kan je de bestanden verwijderen die je nog niet hebt gecommit.
+\textbf{Denk dus na wat je doet!} \shell{git clean -n} toont je wat opgeruimd gaat worden, voeg \shell{-x} toe om
+ook genegeerde (in de \shell{.gitignore}) bestanden op te ruimen, \shell{-d} om ook mappen op te ruimen. Wanneer je tevreden bent met wat weggegooid
+gaat worden voer je \danger{} \shell{git clean -f [-x] [-d]} \danger{} uit.
+
+%met \shell{-x} en \shell{-d} kan je genegeerde bestanden en
+%genegeerde mappen ook verwijderen. \shell{git clean -f [-x] [-d]} voert de verwijdering zonder waarschuwing uit.
+%(\danger{})
 
 \section*{Branching}
 \settowidth{\OptieBreed}{\shell{git checkout --no-merged }}
@@ -136,7 +142,7 @@ repository.
 \settowidth{\OptieBreed}{\shell{git push --set-upstream $remote $branch}}
 \begin{tabular}{p{\OptieBreed}p{1ex}p{\linewidth-\OptieBreed-1ex}}
 	\shell{git remote -v}				& & Toon alle ingestelde remotes.		\\
-	\shell{git remote add $naam $url}	& & Voeg nieuwe remote toe.				\\
+	\shell{git remote add $naam $url}	& & Voeg nieuwe remote toe. (Alleen nodig als je project niet is gecloned.)	\\
 	\shell{git clone $url [$map]}		& & Maak een kopie van het repository op \shell{$url} (in de map \shell{$map}
 												als opgegeven).\\
 	\shell{git fetch}					& & Zet wijzigingen van een \emph{upstream} remote klaar om te mergen.\\
@@ -177,26 +183,30 @@ met \shell{git config --global}):
 		\shell{git zoek $tekst $map} zoekt hoofdletterongevoelig naar \shell{$tekst} in \shell{$map}.
 \end{tabular}
 
-\section*{Meer handige trucjes die je zelf uit moet zoeken}
+\section*{Meer hulp en resources}
 \begin{description}
-	\item[Submodules] Zelfstandige git-repositories insluiten in een ander repository (\shell{git help submodule}).
-	\item[git stash] Je wijzigingen tijdelijk `opzij' zetten met een handig commando (\shell{git help stash}).
-	\item[Travis CI] Wanneer je je code pusht, automatisch tests uitvoeren of andere scripts draaien op een andere
-		computer. (\url{travis-ci.com}, gratis voor studenten via \url{education.github.com/pack})
+	\item[git stash] Je wijzigingen tijdelijk `opzij' zetten met een handig commando (zie \shell{git help stash}, \shell{git
+			stash pop} voor ongedaan).
+	\item[De workshop] Hulp nodig? Join Discord \url{https://discord.gg/qvXvaam} , slides op
+		\url{https://j.mp/gitgudslides}
+	\item Git + Visual Studio: \url{https://visualstudio.github.com}, GUI-clients:
+		\url{https://syntevo.com/smartgit}, \url{https://gitkraken.com}
+	%\item[Travis CI] Wanneer je je code pusht, automatisch tests uitvoeren of andere scripts draaien op een andere
+		%computer. (\url{travis-ci.com}, gratis voor studenten via \url{education.github.com/pack})
 \end{description}
 
 { \footnotesize
-	\section{Bash / terminalcommando's}
+	\section*{Bash / terminalcommando's}
 	\begin{multicols}{4}
 		\begin{itemize}
 			\item \shell{ls} - Bestanden in map
 			\item \shell{cd} - Open map (\shell{..} = omhoog)
 			\item \shell{mkdir} - Maak map
 			\item \shell{touch} - Maak leeg bestand
-			\item \shell{nano} - Simpele editor
+			\item \shell{atom best} - Bewerk \shell{best}
 			\item \shell{mv} - Verplaats / hernoem
 			\item \shell{cp} - Kopi\"eer
-			\item \shell{rm} - Verwijder
+			\item \shell{rm} - Verwijder bestand
 			\item \shell{rm -r} - Verwijder map + inhoud
 			\item \shell{man iets} - \texttt{man}ual van \texttt{iets}
 			\item \shell{cmd > best} - Uitvoer naar \texttt{best}
