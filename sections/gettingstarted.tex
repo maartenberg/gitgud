@@ -135,31 +135,43 @@ bin/*
 \subsection{Geschiedenis bekijken}
 % git log
 \begin{frame}{log}
-	\begin{tabular}{ll}
-		\texttt{git log}& Bekijk geschiedenis van commits (\texttt{--reverse})\\
-		\texttt{git log id1..id2} & Alle geschiedenis tussen \texttt{id1} en \texttt{id2}\\
-		\texttt{git show}& Bekijk veranderingen in commit, standaard nieuwste
-	\end{tabular}
+	\begin{tabularx}{\linewidth}{lX}
+		\texttt{git log}
+			& Bekijk geschiedenis van commits, standaard nieuwste boven (omkeren met \texttt{--reverse})\\
+		\texttt{git log id1..id2}
+			& Alle geschiedenis tussen \texttt{id1} en \texttt{id2}\\
+		\texttt{git show}
+			& Bekijk veranderingen in commit, standaard in nieuwste commit
+	\end{tabularx}
 
+	\medskip
 	De ID's uit \texttt{log} kan je gebruiken in \texttt{git diff}:
 \end{frame}
 
 % git diff
 \begin{frame}{git diff}
-	\begin{tabular}{ll}
-		\texttt{git diff}&Toon veranderingen in tracked files (unstaged)\\
-		\texttt{git diff --staged}&Toon veranderingen klaargezet voor commit\\
-		\texttt{git diff HEAD\^}&Toon veranderingen sinds vorige commit\\
-		\texttt{git diff id1 id2}&Toon verschil tussen commit \texttt{id1} en \texttt{id2}
-	\end{tabular}
+	\begin{tabularx}{\linewidth}{lX}
+		\texttt{git diff}
+			& Toon \textit{unstaged} veranderingen (niet ge\texttt{git add})\\
+		\texttt{git diff --staged}
+			& Toon veranderingen klaargezet voor commit\\
+		\texttt{git diff HEAD\^}
+			& Toon veranderingen sinds vorige commit\\
+		\texttt{git diff id1 id2}
+			& Toon verschil tussen commit \texttt{id1} en \texttt{id2}
+	\end{tabularx}
+
+	\medskip
 	{\footnotesize Waar je id's uit \texttt{git log} haalt. }
 \end{frame}
 
 % git show
 \begin{frame}{git show}
 	\begin{tabular}{l l}
-		\texttt{git show}&Toon info over vorige commit\\
-		\texttt{git show id}&Toon info over commit \texttt{id}\\
+		\texttt{git show}
+			& Toon info over vorige commit\\
+		\texttt{git show id}
+			& Toon info over commit \texttt{id}\\
 	\end{tabular}
 \end{frame}
 
@@ -167,25 +179,26 @@ bin/*
 \begin{frame}{Overzicht (doemoment!)}
 	{ \footnotesize
 	\begin{tabular}{ll}
-		\texttt{git init}					& maak een nieuwe repository \\
-		\texttt{git status} 				& bekijk wat git denkt dat er aan de hand is \\
-		\texttt{git add file map \ldots}	& bestanden klaarzetten voor commit (stagen)	\\
-		\texttt{git commit} 				& klaargezette bestanden in geschiedenis zetten (committen)\\
-		\texttt{git reset file}		    	& bestanden ontstagen (omgekeerde van \texttt{add})	\\
+		\texttt{git init}						& maak een nieuwe repository \\
+		\texttt{git status} 					& bekijk wat git denkt dat er aan de hand is \\
+		\texttt{git add file1 [\ldots]}			& bestand(en) klaarzetten voor commit (stagen)	\\
+		\texttt{git commit} 					& klaargezette bestanden in geschiedenis zetten (committen)\\
+		\texttt{git reset file}		    		& bestanden ontstagen (omgekeerde van \texttt{add})	\\
 		\hline
-		\texttt{git diff}					& Veranderingen in tracked files					\\
-		\texttt{git diff --staged}			& Wat ga ik committen? (wat is staged?)				\\
-		\texttt{git diff HEAD\^}			& Wat is er veranderd sinds de vorige commit?		\\
+		\texttt{git diff}						& Veranderingen in aan Git bekende bestanden		\\
+		\texttt{git diff --staged}				& Wat ga ik committen? (wat is staged?)				\\
+		\texttt{git diff HEAD\^}				& Wat is er veranderd sinds de vorige commit?		\\
 		\hline
-		\texttt{git log}					& Bekijk vorige commits								\\
-		\texttt{git show id}				& Bekijk commit \texttt{id} in detail
+		\texttt{git log}						& Bekijk vorige commits								\\
+		\texttt{git show id}					& Bekijk commit \texttt{id} in detail
 	\end{tabular}
 	}
 	\begin{enumerate}
 		\item Maak een \emph{lege} map met repo
 		\item \emph{Plak} inhoud \url{https://j.mp/gitgud-ex1} in bestand
 		\item Add en commit
-		\item Bug: 16 moet \texttt{`date +\%d`} zijn, repareer en commit
+		\item Bug: 16 moet \texttt{`date +\%d`} zijn, repareer en commit \\
+			(\texttt{`} is een backtick, linksboven op je toetsenbord)
 		\item \texttt{bash simpelscript.sh}
 	\end{enumerate}
 \end{frame}
