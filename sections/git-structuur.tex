@@ -1,57 +1,20 @@
 \section[Structuur]{Structuur van Git}
-\subsection{DAG}
-\begin{frame}{Graaf}
-	Git gebruikt een \emph{Directed Acyclic Graph}/ gerichte acyclische graaf:
+
+\subsection{Commits}
+\begin{frame}{Commits}
+	Commits zijn vastgelegde punten in de geschiedenis van je programma.
 	\begin{itemize}
-		\item Eindig veel bolletjes: \emph{commits}
-		\item Bolletjes wijzen naar hun voorganger, maar niet andersom
-		\item Er kunnen geen loops inzitten
-		\item Verwijzingen naar de commits: \emph{refs}
+		\item Een commit is een snapshot
+		\item Elke commit verwijst naar zijn voorganger
+		\item Soms verwijst een commit naar 2 voorgangers: een merge-commit
+		\item Elke commit krijgt een unieke ID van 40 tekens
+		\item Zodra een commit is gedeeld (push) niet meer aan te passen
 	\end{itemize}
-
-	\begin{center}
-		\includegraphics[width=.6\textwidth]{graphs/dagview.eps}
-	\end{center}
 \end{frame}
 
-\subsection{Locaties}
-\begin{frame}{Bestanden?}
-	3 plekken waar je gegevens zitten:\\
-	\vspace{.5cm}
-	\begin{tabular}{ll}
-		 Working directory			& pas je aan, normale map\\
-		 Staging area				& bestanden die je gaat committen\\
-		 Repository / \texttt{.git/}&Bevat metadata, objecten
-	\end{tabular}
-
-	Bestanden in working directory pas je aan, de rest doet Git!
-\end{frame}
-
-\subsection{Gegevensstructuur}
-\begin{frame}{Wat slaat git op?}
-	Geen lijst van wijzigingen, maar kopie\"en (snapshots):
-	\begin{center}
-		\includegraphics[width=\textwidth]{images/snapshots.png}
-	\end{center}
-	{\footnotesize Hier wint Git al van mappen kopi\"eren: bestanden hergebruikt. } \\
-	{\tiny Afbeelding afkomstig uit Pro Git (S. Chacon \& B. Straub), \url{https://git-scm.com/book}, onder CC-BY-NC-SA.}
-	%(Een version komt hier overeen met een commit, die dus wijst naar versch. versies van bestanden)
-\end{frame}
-
-\begin{frame}{Commit}
-	Bouwsteen van de geschiedenis:
-	\begin{itemize}
-		\item Info over jou: (gebruikers)naam + email
-		\item Bericht: (hopelijk) korte samenvatting van wat er veranderde
-		\item Verwijzing naar set snapshots van bestanden (objects)
-		\item Voorganger (merge: 2, initial: 0)
-		\item Unieke id (40 tekens)
-	\end{itemize}
-	\alert{Later (wanneer gedeeld met externe server) niet meer aan (te) passen!}
-\end{frame}
-
+\subsection{Commits}
 \begin{frame}{Workflow}
-	Om geschiedenis te schrijven gebruik je de ``edit-add-commit''-cyclus:
+	Om geschiedenis te schrijven gebruik je de ``Edit-Add-Commit''-cyclus:
 	\begin{enumerate}
 		\item Bewerk bestanden (meestal tot `werkend' punt)
 		\item \texttt{git add}: Bestanden naar staging area
