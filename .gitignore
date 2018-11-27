@@ -9,7 +9,7 @@
 *.fls
 *.fdb_latexmk
 
-_minted-main/*
+**/_minted-*/*
 graphs/*.eps
 
 # vim
