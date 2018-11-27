@@ -1,2 +1,5 @@
-cheatsheet.pdf: cheatsheet.tex
-	pdflatex -shell-escape cheatsheet.tex
+cheatsheet.pdf:
+	latexmk -pdf -shell-escape cheatsheet
+
+watch:
+	latexmk -pdf -pvc -shell-escape cheatsheet

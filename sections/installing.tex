@@ -1,37 +1,14 @@
-\section[Get git]{Installatie}
+\section[Get git]{Installeren \& instellen}
 
-\subsection{Download}
-\begin{frame}
+\begin{frame}{Installeren \& instellen (doemoment)}
+	Instructies: \href{https://j.mp/gitgudslides}{\texttt{j.mp/gitgudslides}}
 	\begin{itemize}
-		\item Windows: \url{https://git-scm.com/download/win}
+		\item Installeer Git
+		\item Verander je instellingen:
 			\begin{itemize}
-				\item \small{Maak snelkoppeling naar git-bash in \tt{Program Files/Git/cmd}}
+				\item Naam \& e-mailadres
+				\item Editor
+				\item Extra opties voor gemak
 			\end{itemize}
-		\item Mac: \url{https://git-scm.com/download/mac} OF in Terminal
-			\texttt{bash}
-		\item Linux: gebruik je package manager
-	\end{itemize}
-\end{frame}
-
-\subsection{Configureren}
-\begin{frame}{Instellen (doemoment!)}
-	Installeer Git van de site \url{https://git-scm.com}\\
-
-	Open Git Bash en voer in wie je bent:
-	\begin{itemize}
-		\item \tt{git config --global user.name "Lars Verhoeven"}
-		\item \tt{git config --global user.email "user@example.com"}
-	\end{itemize}
-	{\small\alert{Wordt aan iedere commit verbonden die je maakt!}}\\
-
-	\texttt{git config --global color.ui auto}\\
-	\emph{Windows en macOS: installeer Atom \url{https://atom.io}}\\
-	\texttt{git config --global core.editor "atom --wait"}\\
-
-	%Als je minder vaak om je wachtwoord wil worden gevraagd (bij externe servers):
-
-	\begin{itemize}
-		\item \tt{git config --global credential.helper cache}
-		\item \tt{git config --global credential.helper "cache --timeout=3600"}
 	\end{itemize}
 \end{frame}

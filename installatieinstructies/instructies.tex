@@ -188,6 +188,16 @@ Voer de volgende commando's in om Git in te stellen:
 		e-mailadres in te vullen, maar wel aan te raden, sommige websites waar je je code op kan zetten werken niet
 		altijd juist als dit e-mailadres niet klopt.
 
+	\item \shell{git config --global credential.helper "cache --timeout=3600"}
+
+		Dit commando zorgt ervoor dat Git je gebruikersnaam en wachtwoord een uur (3600 seconden) lang onthoudt wanneer
+		je contact hebt met een externe server. Je kan het aantal seconden ook ophogen om nog minder vaak om je
+		wachtwoord te worden gevraagd.
+
+		Het is ook mogelijk om Git zo in te stellen dat je überhaupt geen wachtwoord nodig hebt om je code te kunnen
+		versturen / ophalen, dit is iets ingewikkelder en behandelen we niet tijdens de workshop. Zie hiervoor de
+		instructies van Github over SSH-keys op \url{https://help.github.com/articles/about-ssh/}.
+
 	\item \shell{git config --global color.ui auto}
 
 		Dit commando schakelt kleuren in de uitvoer van Git in. Wanneer je bijvoorbeeld iets toevoegt wordt dit groen

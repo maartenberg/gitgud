@@ -9,10 +9,10 @@ digraph repo {
 	G -> E;
 	G -> F;
 	node [rank=3,shape=box, color=grey] master;
-	node [rank=3,shape=box, color=grey] branch;
+	node [rank=3,shape=box, color=grey] feature;
 	master -> G;
 	HEAD -> master;
-	branch -> E;
-	{ rank = same; E; branch; }
+	feature -> E;
+	{ rank = same; E; feature; }
 	{ rank = same; G; HEAD;master;}
 }

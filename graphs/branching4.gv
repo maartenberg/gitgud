@@ -4,10 +4,10 @@ digraph repo {
 	B -> A;
 	D -> C;
 	node [rank=3,shape=box, color=grey] master;
-	node [rank=3,shape=box, color=grey] branch;
+	node [rank=3,shape=box, color=grey] feature;
 	master -> C;
-	HEAD -> branch;
-	branch -> D;
+	HEAD -> feature;
+	feature -> D;
 	{ rank = same; C; master;}
-	{ rank = same; D; branch; HEAD;}
+	{ rank = same; D; feature; HEAD;}
 }

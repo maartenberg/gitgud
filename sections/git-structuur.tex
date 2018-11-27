@@ -2,19 +2,20 @@
 
 \subsection{Commits}
 \begin{frame}{Commits}
-	Commits zijn vastgelegde punten in de geschiedenis van je programma.
+	Geschiedenis opgebouwd uit commits: vastgelegde punten in de geschiedenis van je programma.
 	\begin{itemize}
 		\item Een commit is een snapshot
-		\item Elke commit verwijst naar zijn voorganger
-		\item Soms verwijst een commit naar 2 voorgangers: een merge-commit
+		\item Elke commit verwijst naar zijn voorganger(s)
 		\item Elke commit krijgt een unieke ID van 40 tekens
 		\item Zodra een commit is gedeeld (push) niet meer aan te passen
 	\end{itemize}
+
+	Bijna alles wat je met Git doet is commits aanmaken.
 \end{frame}
 
 \subsection{Commits}
 \begin{frame}{Workflow}
-	Om geschiedenis te schrijven gebruik je de ``Edit-Add-Commit''-cyclus:
+	Om geschiedenis te schrijven / commits te maken gebruik je de ``Edit-Add-Commit''-cyclus:
 	\begin{enumerate}
 		\item Bewerk bestanden (meestal tot `werkend' punt)
 		\item \texttt{git add}: Bestanden naar staging area

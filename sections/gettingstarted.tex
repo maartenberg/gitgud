@@ -32,17 +32,6 @@ x files added
 	\end{minted}
 \end{frame}
 
-\begin{frame}{Achter de schermen}
-	\begin{enumerate}
-		\item Beginsituatie voor de graaf gemaakt, 0 nodes
-		\item Bestanden in staging area geplaatst
-		\item Nieuwe node aan de graaf toegevoegd met 0 verwijzingen
-	\end{enumerate}
-	\begin{center}
-		\includegraphics[width=.3\textwidth]{graphs/basis0.eps}
-	\end{center}
-\end{frame}
-
 \begin{frame}{Bestanden ontstagen}
 	\texttt{git add} is ongedaan te maken (voordat je hebt ge\texttt{commit}):\\
 	\texttt{git reset HEAD <bestand>}\\
@@ -78,25 +67,13 @@ x files added
 
 \begin{frame}{Commit message schrijven}
 	\begin{enumerate}
-		\item Scheid subject en body met een lege regel (!)
-		\item Subject niet langer dan 50 tekens
-		\item Subject beginnen met een hoofdletter
-		\item Subject niet eindigen met een punt
-		\item Subject imperatief: `Verwijder alles' i.p.v. `Verwijdert alles'
-		\item Regels van de body op 72 tekens lang
-		\item Zet \emph{wat} en \emph{waarom} in de body, \emph{hoe} gebeurt automatisch
+		\item Scheid subject en body met een lege regel
+		\item Houd het leesbaar voor degene die je met je code opzadelt
 	\end{enumerate}
-	% Bron: http://chris.beams.io/posts/git-commit/
-\end{frame}
-
-\begin{frame}
 	\begin{center}
-		\includegraphics[width=\textwidth]{images/areas}
+		\includegraphics[width=0.6\linewidth]{images/xkcd_git_commit}\\
+		{\tiny XKCD 1296, Randall Munroe}
 	\end{center}
-	\begin{itemize}
-		\item \texttt{git add} $\rightarrow$ 'Stage Fixes'
-		\item \texttt{git commit} $\rightarrow$ 'Commit'
-	\end{itemize}
 \end{frame}
 
 \subsubsection{Bestanden negeren}
@@ -164,7 +141,7 @@ bin/*
 	\end{tabularx}
 
 	\medskip
-	{\footnotesize Waar je id's uit \texttt{git log} haalt. }
+	%{\footnotesize Waar je id's uit \texttt{git log} haalt. }
 \end{frame}
 
 % git show
@@ -195,14 +172,18 @@ bin/*
 		\texttt{git show id}					& Bekijk commit \texttt{id} in detail
 	\end{tabular}
 	}
+	{\small
 	\begin{enumerate}
-		\item Maak een \emph{lege} map met repo
-		\item \emph{Plak} inhoud \url{https://j.mp/gitgud-ex1} in bestand
-		\item Add en commit
+		\item \url{j.mp/gitgudslides}: download \texttt{simpelscript.sh} naar lege map
+		\item Open Git Bash: \texttt{git init}; \texttt{git add}; \texttt{git commit}: eerste commit
+		\item \texttt{bash simpelscript.sh}: runt programma
 		\item Bug: 16 moet \texttt{`date +\%d`} zijn, repareer en commit \\
 			(\texttt{`} is een backtick, linksboven op je toetsenbord)
 		\item \texttt{bash simpelscript.sh}
+
+		\item Probeer ook \texttt{git log}, \texttt{git show}
 	\end{enumerate}
+	}
 \end{frame}
 
 \section[Ongedaan]{Dingen ongedaan maken}
@@ -216,11 +197,13 @@ bin/*
 \subsection{Bestanden terugdraaien naar eerdere versie}
 \begin{frame}{Bestand(en) terug naar eerdere versie}
 	\begin{itemize}
-		\item \texttt{git checkout <hash> <bestand>}: enkele bestanden, staget
-		\item \texttt{git checkout HEAD <bestand>}: vorige ongedaan maken
+		\item \texttt{git checkout <hash> <bestand>}: enkele bestanden
+		\item \texttt{git checkout HEAD <bestand>}
 		\item \texttt{git checkout <hash>}: detached HEAD
 		\item \texttt{git checkout master}: detached HEAD ongedaan maken
 	\end{itemize}
+
+	Allemaal veilig!
 	%(Hash opzoeken met git log, of: \texttt{HEAD\^, HEAD\^\^, HEAD\textasciitilde 5})
 \end{frame}
 

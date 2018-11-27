@@ -5,9 +5,9 @@ digraph repo {
 	D -> C;
 	E -> D;
 	node [rank=3,shape=box, color=grey] master;
-	node [rank=3,shape=box, color=grey] branch;
+	node [rank=3,shape=box, color=grey] feature;
 	master -> E;
 	HEAD -> master;
-	branch -> E;
-	{ rank = same; E; branch;HEAD;master;}
+	feature -> E;
+	{ rank = same; E; feature;HEAD;master;}
 }

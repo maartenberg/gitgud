@@ -12,7 +12,7 @@ tex_sources := $(wildcard sections/*.tex)
 # Het eerste `target` in het bestand wordt standaard uitgevoerd wanneer `make`
 # wordt gestart zonder argumenten. Hier geef ik aan dat ik wil dat dan
 # `main.pdf` en `exercises/oefeningen.pdf` worden gemaakt.
-all: main.pdf exercises/oefeningen.pdf
+all: main.pdf exercises/oefeningen.pdf installatieinstructies/Installatieinstructies-Git.pdf
 
 # 'main.pdf' moet worden bijgewerkt als een of meer van de volgende bestanden veranderd zijn,
 # met het commando dat hieronder ingesprongen staat:

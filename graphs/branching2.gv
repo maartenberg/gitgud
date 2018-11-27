@@ -3,9 +3,9 @@ digraph repo {
 	C -> B;
 	B -> A;
 	node [rank=3,shape=box, color=grey] master;
-	node [rank=3,shape=box, color=grey] branch;
+	node [rank=3,shape=box, color=grey] feature;
 	master -> C;
 	HEAD -> master;
-	branch -> C;
-	{ rank = same; branch; C; master; HEAD;}
+	feature -> C;
+	{ rank = same; feature; C; master; HEAD;}
 }

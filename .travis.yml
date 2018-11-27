@@ -28,6 +28,8 @@ script:
     - make cheatsheet.pdf
     - make cheatsheet.pdf
     - cd ..
+    - cd installatieinstructies
+    - make
 deploy:
   provider: releases
   api_key:
@@ -35,6 +37,7 @@ deploy:
   file:
   - main.pdf
   - cheatsheet/cheatsheet.pdf
+  - installatieinstructies/Installatieinstructies-Git.pdf
   skip_cleanup: true
   on:
     tags: true
