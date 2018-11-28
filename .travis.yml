@@ -20,6 +20,7 @@ before_script:
   - "wget https://github.com/gpoore/minted/releases/download/v2.1/minted-2.1.zip"
   - "unzip -j minted-2.1.zip minted-2.1/minted.sty -d ."
   - "unzip -j minted-2.1.zip minted-2.1/minted.sty -d cheatsheet"
+  - "unzip -j minted-2.1.zip minted-2.1/minted.sty -d installatieinstructies"
 script:
     - make diagrams
     - make main.pdf
@@ -38,6 +39,7 @@ deploy:
   - main.pdf
   - cheatsheet/cheatsheet.pdf
   - installatieinstructies/Installatieinstructies-Git.pdf
+  - voorbeelden/basis/simpelscript.sh
   skip_cleanup: true
   on:
     tags: true
